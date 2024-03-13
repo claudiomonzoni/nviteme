@@ -1,0 +1,76 @@
+//colores
+$azul: #0008D0;
+$naranja: #FF4D00;
+$acento: #F9A20E;
+$gris: #404040;
+$verde: #085147;
+$beige: #F2EEE3;
+$fondo: #FDEFCB;
+
+//media query
+$cel: 479px;
+$nocel: 479px;
+$tableta: 768px;
+$tableta-land: 1024px;
+$hd:1600px;
+$hdplus:1990px;
+
+
+
+@mixin cel {
+  @media (max-width: #{$cel}) {
+    @content;
+  }
+}
+
+@mixin nocel {
+  @media (min-width: #{$nocel}) {
+    @content;
+  }
+}
+
+@mixin tableta_land {
+  @media (min-width: #{$tableta-land}) and (max-width: #{$hd - 1px}) {
+    @content;
+  }
+}
+
+@mixin tableta {
+  @media (min-width: #{$tableta - 1px}) and (max-width: #{$tableta-land - 1px}) {
+    @content;
+  }
+}
+
+@mixin hd {
+  @media (min-width: #{$hd}) and (max-width: #{$hdplus}) {
+    @content;
+  }
+}
+
+@mixin hdplus {
+  @media (min-width: #{$hdplus}) {
+    @content;
+  }
+}
+// animaciones 
+.anime{
+  transition: all .5s ease-in-out;
+  }
+
+  @keyframes slide-in {
+    0% { max-height:0; }
+    // por si tenemos en auto la altura
+    100% { max-height:200rem; } 
+  }
+
+//extra
+$radio: .8rem;
+$margen: 4rem;
+$margen-top: 8rem;
+$radio-cel: 0.5rem;
+$margen-cel: 2rem;
+$margen-top-cel: 6rem;
+
+
+// intentar con min
+$margen-riel: calc((100% - (100% - 5rem)) / 2 );
