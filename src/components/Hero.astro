@@ -1,13 +1,68 @@
 ---
 interface Props {
-	title: string;
-	body: string;
-	href: string;
+  nombres: string;
+  fecha: string;
+  pases: number;
+  invitados: string;
 }
 
-const { href, title, body } = Astro.props;
+const { nombres, fecha, pases, invitados } = Astro.props;
 ---
 
 <section id="hero" class="grid contenido">
-	<h1>Nombre de la novia & Nombre del novio</h1>
+  <div class="bandeja">
+    <div class="centro">
+      <span class="familia">{invitados}</span>
+      <h1>{nombres}</h1>
+      <p>desean invitarte a <b>celebrar su boda</b></p>
+      <p class="fecha">{fecha}</p>
+    </div>
+    <div id="pases">
+      No. de pases: {pases}
+    </div>
+  </div>
+
 </section>
+
+<style lang="scss">
+  @import "../estilos/_variables.scss";
+  section {
+    background: #5f5f5f;
+  }
+
+  #hero .bandeja {
+    background:  url(./patron-fondo.webp), $primario;
+    background-blend-mode: color-dodge;
+    text-align: center;
+    color: white;
+    height: 80dvh;
+    margin-top: 20dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.5rem, 1vw, 3vw);
+    position: relative;
+  }
+  span {
+    border-bottom: solid 1px white;
+    margin: 2rem;
+    padding-bottom: 2rem;
+    display: block;
+  }
+  .familia{
+    font-family: "Italiana", sans-serif;
+  }
+  .fecha {
+    color: $acento;
+    font-family: "Italiana", sans-serif;
+    font-size: clamp(2rem, 3vw, 6vw)
+  }
+  #pases{
+    font-family: "Italiana", sans-serif;
+    background: $secundario;
+    padding: 2rem;
+    position: absolute;
+    bottom: -2rem;
+    @extend .sombra;
+  }
+</style>
