@@ -1,0 +1,22 @@
+---
+interface Props {
+    icono: string;
+    texto: string;
+}
+const {icono, texto} = Astro.props;
+---
+<div class="titulo">
+
+    <img src={icono} alt={texto}>
+    <h2>{texto}</h2>
+    
+</div>
+
+<style lang="scss">
+    @import '../estilos/_variables.scss';
+    .titulo{
+        margin: $margen-top $margen $margen-cel $margen;
+        text-align: center;
+    }
+ 
+</style>

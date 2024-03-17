@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
-
+import Encabezados from '../components/Encabezados.astro';
+import ParrafosLibres from '../components/ParrafosLibres.astro';
 const novios = "Delia y Olive"
 const fecha = "sábado 22 de marzo del 2024"
 const invitados = 'Estimada familia Hernandez'
@@ -11,5 +12,9 @@ const pases = 4
 
 <Layout title="Invitación de boda.">
 <Hero nombres={novios} fecha={fecha} invitados={invitados} pases={pases} />
+<Encabezados icono='' texto='EL EVENTO'/>
+<ParrafosLibres>
+Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus eligendi fugiat voluptas sint, mollitia consequuntur. Assumenda eaque excepturi mollitia doloremque laborum debitis earum!
+</ParrafosLibres>
 </Layout>
 
