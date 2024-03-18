@@ -4,9 +4,10 @@ interface Props {
   fecha: string;
   pases: number;
   invitados: string;
+  cover: string;
 }
 
-const { nombres, fecha, pases, invitados } = Astro.props;
+const { cover, nombres, fecha, pases, invitados } = Astro.props;
 ---
 
 <section id="hero" class="grid contenido">
@@ -21,48 +22,60 @@ const { nombres, fecha, pases, invitados } = Astro.props;
       No. de pases: {pases}
     </div>
   </div>
-
 </section>
 
-<style lang="scss">
+<style lang="scss" define:vars={{ cover }}>
   @import "../estilos/_variables.scss";
-  section {
-    background: #5f5f5f;
+  #hero {
+    position: relative;
+    grid-template-rows: 1fr 1fr 20%;
+    height: 100dvh;
+    &::before {
+      content: "";
+      position: absolute;
+      grid-row: 1 / span 2;
+      width: 100%;
+      height: 100%;
+      // background: url(var(--cover));
+      background: url("/cover.jpg") no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
   }
 
-  #hero .bandeja {
-    background:  url(./patron-fondo.webp), $primario;
+  .bandeja {
+    grid-row: 2 / -1;
+    background: url(./patron-fondo.webp), $primario;
     background-blend-mode: color-dodge;
     text-align: center;
     color: white;
-    height: 80dvh;
-    margin-top: 20dvh;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: clamp(1.5rem, 1vw, 3vw);
     position: relative;
+    padding: $margen-top $margen-min;
   }
   span {
     border-bottom: solid 1px white;
-    margin: 2rem;
-    padding-bottom: 2rem;
+    padding:0 0 $margen-min 0;
+    margin-bottom: $margen-min;
     display: block;
   }
-  .familia{
+  .familia {
     font-family: "Italiana", sans-serif;
   }
   .fecha {
     color: $acento;
     font-family: "Italiana", sans-serif;
-    font-size: clamp(2rem, 3vw, 6vw)
+    font-size: clamp(2rem, 3vw, 6vw);
   }
-  #pases{
+  #pases {
     font-family: "Italiana", sans-serif;
     background: $secundario;
     padding: 2rem;
     position: absolute;
-    bottom: -2rem;
+    bottom: -3rem;
     @extend .sombra;
   }
 </style>
