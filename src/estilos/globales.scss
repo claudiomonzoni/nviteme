@@ -18,6 +18,7 @@ html {
 
   color: $gris;
   font-family: "Montserrat", sans-serif;
+  font-weight: 100;
   // background: rgb(242, 238, 227);
   background: #fff;
   // background: linear-gradient(
@@ -132,3 +133,12 @@ b {
   grid-column: contenido-start / pantalla-end;
 }
 
+
+.conte-cartas{
+  display: flex;
+  gap: $margen-min;
+  margin: $margen 0;
+  flex-wrap: wrap;
+
+
+}

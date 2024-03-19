@@ -1,0 +1,57 @@
+---
+interface Props {
+    icono: string;
+    titulo: string;
+  
+
+}
+const {icono, titulo} = Astro.props;
+---
+
+<div class="carta">
+    <img src={icono} alt={titulo}>
+    <h3>{titulo}</h3>
+
+    <slot />
+
+</div>
+
+<style lang="scss">
+    @import '../estilos/_variables.scss';
+
+    .carta{
+        aspect-ratio: 1/1;
+        flex: 1;
+        text-align: center;
+        background: url('/patron-fondo.png'), $secundario;
+        background-blend-mode: multiply;
+        background-size: 200% 200%;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color:white;
+        padding: $margen-min;
+        position: relative;
+        // word-break: break-all;
+        h3{
+            width: fit-content;
+            color:white;
+            border-bottom: solid 1px white;
+            margin: $margen-min 0;
+            font-size: clamp(1.6rem, 1.6vw, 3rem)
+        }
+        
+        img{
+            max-width: 2.5rem;
+            height: auto;
+            margin: 0 auto;
+        }
+        
+        @include cel{
+          flex: 1 0 100%;
+
+      }
+    }
+</style>

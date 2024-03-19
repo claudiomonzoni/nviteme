@@ -1,0 +1,23 @@
+---
+interface Props {
+    frase: string;	
+}
+ const { frase } = Astro.props;
+---
+
+<p class="frase">
+    {frase}
+</p>
+<style lang="scss">
+    @import "../estilos/_variables.scss";
+    .frase{
+        color: $primario;
+        font-family: 'Italiana', serif;
+        font-size: clamp(3rem, 5vw, 7vw);
+        text-align: center;
+        margin: $margen-top $margen-min 0 $margen-min;
+        padding: $margen $margen-min;
+        border-top: 1px solid $primario;
+        border-bottom: 1px solid $primario;
+    }
+</style>

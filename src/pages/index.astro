@@ -1,20 +1,61 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Hero from '../components/Hero.astro';
-import Encabezados from '../components/Encabezados.astro';
-import ParrafosLibres from '../components/ParrafosLibres.astro';
-const novios = "Delia y Olive"
-const fecha = "sábado 22 de marzo del 2024"
-const invitados = 'Estimada familia Hernandez'
-const pases = 4
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Encabezados from "../components/Encabezados.astro";
+import ParrafosLibres from "../components/ParrafosLibres.astro";
+import Cartas from "../components/Cartas.astro";
+import Frase from "../components/Frase.astro";
+import Mapa from "../components/Mapa.astro";
 
+const novios = "Delia y Olive";
+const fecha = "sábado 22 de marzo del 2024";
+const invitados = "Estimada familia Hernandez";
+const pases = 4;
+const vestimenta = "formal";
 ---
 
 <Layout title="Invitación de boda.">
-<Hero cover={'/cover.jpg'} nombres={novios} fecha={fecha} invitados={invitados} pases={pases} />
-<Encabezados icono='/evento-icono.svg' texto='EL EVENTO'/>
-<ParrafosLibres>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus eligendi fugiat voluptas sint, mollitia consequuntur. Assumenda eaque excepturi mollitia doloremque laborum debitis earum!
-</ParrafosLibres>
-</Layout>
+  <Hero
+    cover={"/cover.jpg"}
+    nombres={novios}
+    fecha={fecha}
+    invitados={invitados}
+    pases={pases}
+  />
+  <Encabezados icono="/evento-icono.svg" texto="EL EVENTO" />
+  <ParrafosLibres>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus eligendi
+    fugiat voluptas sint, mollitia consequuntur. Assumenda eaque excepturi
+    mollitia doloremque laborum debitis earum!
+  </ParrafosLibres>
+  <section class="grid contenido">
+    <div class="conte-cartas">
+      <Cartas icono="/fecha-icono.svg" titulo="Fecha de nuestra boda">
+        <p>{fecha}</p>
+      </Cartas>
+      <Cartas icono="/detalles-icono.svg" titulo="Detalles">
+        <ul>
+          <li>Favor de no vestir de blanco</li>
+          <li>Favor de asistir sin niños menores de 12 años</li>
+        </ul>
+      </Cartas>
+      <Cartas icono="/formal-icono.svg" titulo="Código de vestimenta">
+        <p>{vestimenta}</p>
+      </Cartas>
+    </div>
+  </section>
 
+  <section class="grid contenido">
+    <Frase frase="De vez en cuando, justo en medio de una vida ordinaria, el amor nos regala un cuento de hadas." />
+  </section>
+
+  <Encabezados icono="/lugar-icono.svg" texto="EL LUGAR" />
+  <section class="grid contenido">
+    <ParrafosLibres>
+      Te compartimos la ubicación, te esperamos en la ceremonia religiosa y en la recepción de nuestra boda
+    </ParrafosLibres>
+  </section>
+
+  <Mapa lat={40.416775} lng={-3.703790} />
+
+</Layout>
