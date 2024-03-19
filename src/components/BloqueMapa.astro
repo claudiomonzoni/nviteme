@@ -1,0 +1,58 @@
+---
+interface Props {
+  encabezado: string;
+  dir: string;
+  lat: number;
+  lng: number;
+  mapName: string;
+}
+
+const { encabezado, dir, lat, lng, mapName } = Astro.props;
+
+import Mapa from "./Mapa.astro";
+---
+
+<div class="bloqueMapa">
+  <div class="izq">
+    <Mapa lat={lat} lng={lng} mapName={mapName} />
+  </div>
+  <div class="der">
+    <div class="bandeja">
+      <h3>{encabezado}</h3>
+    <p>{dir}</p>
+    </div>
+  </div>
+</div>
+
+<style lang="scss">
+  @import "../estilos/_variables.scss";
+  h3{
+    color: $secundario;
+    font-size: clamp(1.5rem, 2.5vw, 3rem);
+  }
+
+  .bloqueMapa {
+    display: flex;
+    .izq{
+      flex: 1.3;
+    }
+    .der{
+      flex:1;
+      display: inherit;
+      justify-content: center;
+      align-items: center;
+
+    }
+    @include cel{
+      flex-wrap: wrap;
+      .izq, .der{
+        flex: 1 0 100%;	
+      }
+      .izq{
+        order: 2;
+      }
+      .der{
+        order: 1;
+      }
+    }  }
+</style>

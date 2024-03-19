@@ -2,14 +2,19 @@
 interface Props {
     lat: number;
     lng: number;
+    mapName: string;
 }
-const { lat, lng } = Astro.props;
+const { lat, lng, mapName } = Astro.props;
 ---
 
-<div id="mapa"></div>
-<style>
-    #mapa {
-        height: 50dvw
+<div id={mapName}></div>
+<style lang="scss">
+  @import "../estilos/_variables.scss";
+    #mapa1, #mapa2 {
+        height: 20dvw;
+        @include cel {
+          height: 70dvw;
+        }
     }
 </style>
 <link
@@ -19,14 +24,14 @@ const { lat, lng } = Astro.props;
   crossorigin=""
 />
 <script src="/leaflet.js" is:inline></script>
-<script define:vars={{ lat, lng }}>
-    var map = L.map("mapa").setView([lat, lng], 15);
+<script define:vars={{ lat, lng, mapName }}>
+    var map = L.map(mapName).setView([lat, lng], 15);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
       attribution:
         '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(map);
-    var circle = L.circle([lat, lang], {
+    var circle = L.circle([lat, lng], {
       color: "red",
       fillColor: "#E76128",
       fillOpacity: 0.5,

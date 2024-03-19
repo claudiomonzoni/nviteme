@@ -5,8 +5,7 @@ import Encabezados from "../components/Encabezados.astro";
 import ParrafosLibres from "../components/ParrafosLibres.astro";
 import Cartas from "../components/Cartas.astro";
 import Frase from "../components/Frase.astro";
-import Mapa from "../components/Mapa.astro";
-
+import BloqueMapa from "../components/BloqueMapa.astro";	
 const novios = "Delia y Olive";
 const fecha = "sábado 22 de marzo del 2024";
 const invitados = "Estimada familia Hernandez";
@@ -54,8 +53,12 @@ const vestimenta = "formal";
     <ParrafosLibres>
       Te compartimos la ubicación, te esperamos en la ceremonia religiosa y en la recepción de nuestra boda
     </ParrafosLibres>
+    <div id="zigzag">
+        <BloqueMapa encabezado="Ceremonia" dir="Calle 56 # 56 - 56" lat={-34.6037} lng={-58.3816} mapName="mapa1"/>
+        <BloqueMapa encabezado="Recepción" dir="Calle 56 # 56 - 56" lat={20.492900} lng={-87.243210} mapName="mapa2" />
+    </div>
   </section>
 
-  <Mapa lat={40.416775} lng={-3.703790} />
+
 
 </Layout>
