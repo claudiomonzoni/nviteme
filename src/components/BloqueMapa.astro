@@ -2,12 +2,13 @@
 interface Props {
   encabezado: string;
   dir: string;
+  horario: string;
   lat: number;
   lng: number;
   mapName: string;
 }
 
-const { encabezado, dir, lat, lng, mapName } = Astro.props;
+const { encabezado, dir, lat, lng, mapName, horario } = Astro.props;
 
 import Mapa from "./Mapa.astro";
 ---
@@ -19,40 +20,56 @@ import Mapa from "./Mapa.astro";
   <div class="der">
     <div class="bandeja">
       <h3>{encabezado}</h3>
-    <p>{dir}</p>
+      <time datetime="{horario}">
+        <img src="/hora-icono.svg" alt="horario" /> {horario}</time
+      >
+      <address>
+        <img src="/lugar-icono.svg" alt="horario" />
+        {dir}</address>
     </div>
   </div>
 </div>
 
 <style lang="scss">
   @import "../estilos/_variables.scss";
-  h3{
+  h3 {
     color: $secundario;
     font-size: clamp(1.5rem, 2.5vw, 3rem);
   }
 
   .bloqueMapa {
     display: flex;
-    .izq{
-      flex: 1.3;
+    position: relative;
+    .izq {
+      flex: 1.4;
     }
-    .der{
-      flex:1;
+    .der {
+      padding: $margen-cel;
+      flex: .6;
       display: inherit;
       justify-content: center;
       align-items: center;
-
     }
-    @include cel{
-      flex-wrap: wrap;
-      .izq, .der{
-        flex: 1 0 100%;	
+    time, address {
+      img {
+        width: 20px;
+        height: auto;
+        padding: 5px 0;
       }
-      .izq{
+    }
+    @include cel {
+      flex-wrap: wrap;
+      .izq,
+      .der {
+        flex: 1 0 100%;
+        text-align: center;
+      }
+      .izq {
         order: 2;
       }
-      .der{
+      .der {
         order: 1;
       }
-    }  }
+    }
+  }
 </style>

@@ -11,7 +11,7 @@ const { lat, lng, mapName } = Astro.props;
 <style lang="scss">
   @import "../estilos/_variables.scss";
     #mapa1, #mapa2 {
-        height: 20dvw;
+        height: 22dvw;
         @include cel {
           height: 70dvw;
         }
@@ -28,8 +28,7 @@ const { lat, lng, mapName } = Astro.props;
     var map = L.map(mapName).setView([lat, lng], 15);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
       maxZoom: 19,
-      attribution:
-        '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+ 
     }).addTo(map);
     var circle = L.circle([lat, lng], {
       color: "red",
