@@ -6,12 +6,16 @@ import ParrafosLibres from "../components/ParrafosLibres.astro";
 import Cartas from "../components/Cartas.astro";
 import Frase from "../components/Frase.astro";
 import BloqueMapa from "../components/BloqueMapa.astro";	
+import Regalos from "../components/Regalos.astro";
+import Contador from "../components/Contador.astro";
 
 const novios = "Delia y Olive";
-const fecha = "sábado 22 de marzo del 2024";
+const fecha = "sábado 23 de marzo del 2024";
+const fechaContador = '2024-03-23';
 const invitados = "Estimada familia Hernandez";
 const pases = 4;
 const vestimenta = "formal";
+
 ---
 
 <Layout title="Invitación de boda.">
@@ -59,7 +63,15 @@ const vestimenta = "formal";
         <BloqueMapa encabezado="Recepción" dir="Calle 56 # 56 - 56" horario="18:30" lat={20.492900} lng={-87.243210} mapName="mapa2" />
     </div>
   </section>
+  
+  <section class="grid contenido">
+    <Regalos frase="El regalo más importante será tu presencia, te agradecemos si aparte nos deseas hacer un regalo en este día tan especial." beneficiario="Delia Ramirez" banco="Santander" cuenta="123456789" />
+  </section>
 
+
+  <section class="grid contenido">
+    <Contador fecha = {fechaContador} />
+  </section>
 
 
 </Layout>
