@@ -6,12 +6,12 @@ interface Props {
 const { fecha } = Astro.props;
 ---
 
+<div id="demo"></div>
 <div id="contador">
 <p id="falta">Solo faltan:</p>
 <div id="numero">12</div>
 <p id="dias">días</p>
 </div>
-<div id="demo"></div>
 
 <style lang="scss">
     @import "../estilos/_variables.scss";
@@ -30,11 +30,17 @@ const { fecha } = Astro.props;
 
 #numero{
     font-size: clamp(6.5rem, 10.5vw, 14rem);
-    }
-    p{
-        font-size: clamp(1.5rem, 2.5vw, 3rem);
-        margin: 0;
-        
+}
+p{
+    font-size: clamp(1.5rem, 2.5vw, 3rem);
+    margin: 0;
+    
+}
+#demo{
+        font-family: 'Italiana', serif;
+        text-align: center;
+        padding-bottom: 2rem;
+        font-size: 2.5rem;
     }
 
 </style>
