@@ -6,6 +6,7 @@ interface Props {
   cuenta: string;
 }
 const { frase, beneficiario, banco, cuenta } = Astro.props;
+import Btn from "./Btn.astro";
 ---
 
 <div id="bandeja">
@@ -18,7 +19,9 @@ const { frase, beneficiario, banco, cuenta } = Astro.props;
     <h2>Sugerencia de regalos</h2>
 
     <p>{frase}</p>
-    aqui los botones
+    <Btn url={'#'} texto="Amazon" />
+    <Btn url={'#'} texto="Marcado Libre" />
+    <Btn url={'#'} texto="Liverpool" />
   </div>
   <div id="transferencias">
     <h3>Transferencias:</h3>
@@ -57,14 +60,14 @@ const { frase, beneficiario, banco, cuenta } = Astro.props;
     ul {
       text-align: left;
     }
-    padding: $margen;
+    padding: $margen $margen-min;
     display: flex;
     flex-wrap: wrap;
     gap: $margen-cel;
     justify-content: center;
     align-items: center;
     text-align: center;
-    margin-bottom: $margen;
+    margin-bottom: $margen-cel;
     background: $secundario;
     color: white;
   }
@@ -73,6 +76,8 @@ const { frase, beneficiario, banco, cuenta } = Astro.props;
     max-width: 60%;
     @include cel {
       max-width: 100%;
+      padding: 0;
+
     }
   }
 </style>

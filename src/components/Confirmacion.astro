@@ -6,7 +6,7 @@ interface Props {
   dias_antes: number;
 }
 const { whatsapp, pases, nombre, dias_antes } = Astro.props;
-import Encabezado from "./Encabezados.astro";
+import Btn from "./Btn.astro";
 ---
 
 <div class="confirmacion">
@@ -16,7 +16,7 @@ import Encabezado from "./Encabezados.astro";
         d="M41 6.3152H22.55V10.4293H41V6.3152ZM41 22.7717H22.55V26.8859H41V22.7717ZM7.257 14.5435L0 7.26145L2.8905 4.36098L7.2365 8.72196L15.9285 0L18.819 2.90046L7.257 14.5435ZM7.257 31L0 23.718L2.8905 20.8175L7.2365 25.1785L15.9285 16.4565L18.819 19.357L7.257 31Z"
         fill="white"></path>
     </svg>
-    <h2>CONFIRMACIÓN</h2>
+    <h2>Confirmación</h2>
     <p>
       Por favor <b>confírmanos</b> tu asistencia <b
         >al menos {dias_antes} días antes del evento</b
@@ -25,12 +25,13 @@ import Encabezado from "./Encabezados.astro";
 
     <form>
       <label for="pases">Selecciona el numero de pases:</label>
-      <select name="pases" id="pases">
+      <select name="pases" id="Confipases">
         <option value="0">0</option>
       </select>
       <label for="comentarios">Envíanos comentarios (opcional):</label>
       <textarea name="comentarios" id="comentarios"></textarea>
-      <a href="#">confirmar mi asistencia</a>
+      <Btn url={'#'} texto="<b>Confirmar</b> asistencia" />
+
     </form>
   </div>
 </div>
@@ -38,6 +39,10 @@ import Encabezado from "./Encabezados.astro";
   @import "../estilos/_variables.scss";
   h2 {
     color: white;
+    padding-top: $margen-min;
+    @include cel{
+      font-size:1.6rem;
+    }
   }
   .confirmacion {
     color: white;
@@ -51,6 +56,7 @@ import Encabezado from "./Encabezados.astro";
     background: $secundario;
     @include cel {
       max-width: 100%;
+      padding: $margen-cel;
     }
   }
   form{
@@ -67,6 +73,9 @@ import Encabezado from "./Encabezados.astro";
     textarea, select{
         opacity: 0.5;
     }
+    @include cel{
+      width: 100%;
+    }
   }
   svg {
     max-width: 2.5rem;
@@ -74,3 +83,13 @@ import Encabezado from "./Encabezados.astro";
     margin: 0 auto;
   }
 </style>
+
+<script define:vars={{ pases }}>
+const elselect = document.querySelector('#Confipases')
+const generarPases = () => {
+  for (let i = 1; i <= pases; i++) {
+    elselect.innerHTML += `<option value="Numero de pases: ${i}">${i}</option>`
+  }
+}
+generarPases()
+</script>
