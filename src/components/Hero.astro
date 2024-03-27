@@ -14,12 +14,12 @@ const { cover, nombres, fecha, pases, invitados } = Astro.props;
   <div class="bandeja">
     <div class="centro">
       <span class="familia">{invitados}</span>
-      <h1>{nombres}</h1>
+      <h1 set:html={nombres}></h1>
       <p>desean invitarte a <b>celebrar su boda</b></p>
       <p class="fecha">{fecha}</p>
     </div>
     <div id="pases">
-      No. de pases: {pases}
+      No. de pases: <span>{pases}</span>
     </div>
   </div>
 </section>
@@ -52,9 +52,12 @@ const { cover, nombres, fecha, pases, invitados } = Astro.props;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: clamp(1.5rem, 1vw, 3vw);
+    font-size: clamp(1.2rem, 1vw, 3vw);
     position: relative;
     padding: $margen-top $margen-min;
+    @include cel {
+
+    }
   }
   span {
     border-bottom: solid 1px white;
@@ -75,7 +78,15 @@ const { cover, nombres, fecha, pases, invitados } = Astro.props;
     background: $secundario;
     padding: 2rem;
     position: absolute;
-    bottom: -3rem;
+    bottom: -5rem;
     @extend .sombra;
+    span {
+      font-size: clamp(2.5rem, 2vw, 5vw);
+    }
+    @include cel {
+      bottom: -6rem;
+      padding: 1rem;
+      font-size: 1rem;
+    }
   }
 </style>

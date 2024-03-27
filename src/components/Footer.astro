@@ -1,0 +1,34 @@
+---
+
+---
+
+<footer>
+  <p>Invitación desarrollada y diseñada por:</p>
+  <a href="https://nvite.me" target="_blank">
+    <img
+      src="/nvite-logo.svg"
+      alt="invitaciones digitales para bodas, quince años y eventos"
+    />
+    <ul>
+      <li><a href="#"><img src="/Instagram.svg" alt="instagram" /></a></li>
+      <li><a href="#"><img src="/Facebook.svg" alt="facebook" /></a></li>
+      <li><a href="#"><img src="/TikTok.svg" alt="Tik tok" /></a></li>
+    </ul>
+  </a>
+  <p>© 2022 - {new Date().getFullYear()} Todos los derechos reservados</p>
+</footer>
+
+<style lang="scss">
+  @import "../estilos/_variables.scss";
+  footer {
+    border-top: solid 1px $secundario;
+    padding: $margen 0;
+    margin: 0 auto;
+    text-align: center;
+  }
+  ul {
+    display: flex;
+    justify-content: center;
+    padding: $margen-min;
+  }
+</style>

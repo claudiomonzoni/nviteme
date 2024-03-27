@@ -133,35 +133,37 @@ b {
   grid-column: contenido-start / pantalla-end;
 }
 
-
-.conte-cartas{
+.conte-cartas {
   display: flex;
   gap: $margen-min;
   margin: $margen 0;
   flex-wrap: wrap;
-
-
 }
 
-#zigzag{
+#zigzag {
   padding: $margen 0;
-  .bloqueMapa:last-child{
+  .bloqueMapa:last-child {
     z-index: 400;
     transform: translateY(-2rem);
-    @include cel{
+    @include cel {
       transform: translateY(0);
     }
-    .izq{
+    .izq {
       @extend .sombra;
       order: 2;
     }
-    .der{
+    .der {
       order: 1;
     }
   }
 }
 
-.fondo-mitad{
-  background: rgb(0,0,0);
-background: linear-gradient(0deg, $terciario 50%, rgba(255,255,255,1) 50%, rgba(255,255,255,1) 100%);
+.fondo-mitad {
+  background: $terciario;
+  background: linear-gradient(
+    0deg,
+    $terciario 50%,
+    rgba(255, 255, 255, 1) 50%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }

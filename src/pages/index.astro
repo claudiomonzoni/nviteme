@@ -9,8 +9,9 @@ import BloqueMapa from "../components/BloqueMapa.astro";
 import Regalos from "../components/Regalos.astro";
 import Contador from "../components/Contador.astro";
 import Confirmacion from "../components/Confirmacion.astro";
+import Footer from "../components/Footer.astro";
 
-const novios = "Delia y Olive";
+const novios = "Delia Guitierrez <br> y Oliver Maciel";
 const fecha = "sábado 23 de marzo del 2024";
 const fechaContador = '2024-04-27';
 const invitados = "familia Hernandez";
@@ -75,7 +76,10 @@ const vestimenta = "formal";
   </section>
 
   <section class="grid contenido">
-  <Confirmacion whatsapp={123456789} pases={pases} nombre={invitados} dias_antes={7} />  
-  </section>t
+    <Confirmacion whatsapp={123456789} pases={pases} nombre={invitados} dias_antes={7} />  
+  </section>
+  <section class="grid contenido">
+  <Footer />
+  </section>
 
 </Layout>

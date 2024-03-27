@@ -30,8 +30,7 @@ import Btn from "./Btn.astro";
       </select>
       <label for="comentarios">Envíanos comentarios (opcional):</label>
       <textarea name="comentarios" id="comentarios"></textarea>
-      <Btn url={'#'} texto="<b>Confirmar</b> asistencia" />
-
+      <Btn url={"#"} texto="<b>Confirmar</b> asistencia" />
     </form>
   </div>
 </div>
@@ -40,8 +39,8 @@ import Btn from "./Btn.astro";
   h2 {
     color: white;
     padding-top: $margen-min;
-    @include cel{
-      font-size:1.6rem;
+    @include cel {
+      font-size: 1.6rem;
     }
   }
   .confirmacion {
@@ -53,27 +52,37 @@ import Btn from "./Btn.astro";
     padding: $margen;
     margin: 0 auto;
     max-width: 60%;
-    background: $secundario;
+    background: url("/patron-fondo.png"), $secundario;
+    background-blend-mode: multiply;
+    background-size: contain;
+    background-position: center;
     @include cel {
       max-width: 100%;
       padding: $margen-cel;
     }
   }
-  form{
+  form {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     text-align: left;
     margin: 0 auto;
     width: 50%;
-    label, input, select, textarea{
-        flex: 1 0 100%;
-        margin-top: .6rem;
-        padding: .5rem;
+    label,
+    input,
+    select,
+    textarea {
+      flex: 1 0 100%;
+      margin-top: 0.6rem;
+      padding: 0.5rem 0;
     }
-    textarea, select{
-        opacity: 0.5;
+    textarea,
+    select {
+      border: none !important;
+      opacity: 0.5;
+      padding: 0.5rem;
+      @extend .sombra;
     }
-    @include cel{
+    @include cel {
       width: 100%;
     }
   }
@@ -85,11 +94,11 @@ import Btn from "./Btn.astro";
 </style>
 
 <script define:vars={{ pases }}>
-const elselect = document.querySelector('#Confipases')
-const generarPases = () => {
-  for (let i = 1; i <= pases; i++) {
-    elselect.innerHTML += `<option value="Numero de pases: ${i}">${i}</option>`
-  }
-}
-generarPases()
+  const elselect = document.querySelector("#Confipases");
+  const generarPases = () => {
+    for (let i = 1; i <= pases; i++) {
+      elselect.innerHTML += `<option value="Numero de pases: ${i}">${i}</option>`;
+    }
+  };
+  generarPases();
 </script>
