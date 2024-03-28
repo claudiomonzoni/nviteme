@@ -23,14 +23,15 @@ import Btn from "./Btn.astro";
       >, nos ayudarás mucho con la organización al hacerlo.
     </p>
 
-    <form>
+    <form id="formulario">
       <label for="pases">Selecciona el numero de pases:</label>
       <select name="pases" id="Confipases">
         <option value="0">0</option>
       </select>
       <label for="comentarios">Envíanos comentarios (opcional):</label>
       <textarea name="comentarios" id="comentarios"></textarea>
-      <Btn url={"#"} texto="<b>Confirmar</b> asistencia" />
+      <a href="#" id="btnconfirmar">Confirmar</a>
+      <!-- <Btn url={"#"} texto="<b>Confirmar</b> asistencia" /> -->
     </form>
   </div>
 </div>
@@ -93,12 +94,63 @@ import Btn from "./Btn.astro";
   }
 </style>
 
-<script define:vars={{ pases }}>
-  const elselect = document.querySelector("#Confipases");
+<script define:vars={{ pases, whatsapp }}>
+// alimentar el select del numero de pases
+  const pasesInput = document.querySelector("#Confipases");
   const generarPases = () => {
     for (let i = 1; i <= pases; i++) {
-      elselect.innerHTML += `<option value="Numero de pases: ${i}">${i}</option>`;
+      pasesInput.innerHTML += `<option value="Numero de pases: ${i}">${i}</option>`;
     }
   };
   generarPases();
+
+
+  // whatsapp
+
+  // import moment from "moment";
+
+
+const comentarios = document.getElementById("comentarios");
+const btnconfirmar = document.getElementById("btnconfirmar");
+
+
+
+//user agent
+const ua = navigator.userAgent;
+
+//si es cel app si es pc web.app
+const enviar = (e) => {
+  e.preventDefault();
+
+
+  if (
+  pasesInput.value === "" 
+  ) {
+    console.log("vacio");
+  } else {
+    btnconfirmar.classList.remove("desactivado");
+  }
+  //comprobar si es cel o pc
+  let whats = "";
+  if (/Mobile/i.test(ua)) {
+    whats = `https://api.whatsapp.com/send/?phone=${whatsapp}&text=`;
+  } else {
+    whats = `https://web.whatsapp.com/send/?phone=${whatsapp}&text=`;
+  }
+
+
+  envio( whats, pasesInput.value, comentarios.value);
+};
+
+const envio = ( whats, pasesInput, comentarios) => {
+
+  const url = `
+  ${whats}Hola,%20me%20contacto%20desde%20marioly.com,%20deseo%20cotizar:%0aNombre:%20${pasesInput}%0aTour:%20${comentarios}`;
+
+  btnconfirmar.href = url;
+  
+};
+
+pasesInput.addEventListener("focusout", enviar);
+comentarios.addEventListener("focusout", enviar);
 </script>
