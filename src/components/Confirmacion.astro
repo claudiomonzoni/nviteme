@@ -76,6 +76,10 @@ import Btn from "./Btn.astro";
       margin-top: 0.6rem;
       padding: 0.5rem 0;
     }
+    textarea{
+      field-sizing: content;
+      max-height: 500px;
+    }
     textarea,
     select {
       border: none !important;
@@ -94,7 +98,7 @@ import Btn from "./Btn.astro";
   }
 </style>
 
-<script define:vars={{ pases, whatsapp }}>
+<script define:vars={{ pases, whatsapp, nombre }}>
 // alimentar el select del numero de pases
   const pasesInput = document.querySelector("#Confipases");
   const generarPases = () => {
@@ -145,7 +149,7 @@ const enviar = (e) => {
 const envio = ( whats, pasesInput, comentarios) => {
 
   const url = `
-  ${whats}Hola,%20me%20contacto%20desde%20marioly.com,%20deseo%20cotizar:%0aNombre:%20${pasesInput}%0aTour:%20${comentarios}`;
+  ${whats}Hola,%20les%20confirmo%20la%20asistencia%20a%20la%20boda%20de:%20${nombre},%20y%20usaremos:%0a${pasesInput}.%0aComentarios:%20${comentarios}.`;
 
   btnconfirmar.href = url;
   
