@@ -13,7 +13,7 @@ html {
     font-size: clamp(16px, 1.8vw, 18px);
   }
   @include hdplus {
-    font-size: clamp(12px, 6vw, 16px);
+    font-size: clamp(14px, 7vw, 22px);
   }
 
   color: $gris;
@@ -65,10 +65,10 @@ h3 {
 }
 h1 {
   color: white;
-  font-size: clamp(4.1rem, 6vw, 30vw);
+  font-size: clamp(3rem, 6vw, 30vw);
 }
 h2 {
-  font-size: clamp(2.5em, 2vw, 30vw);
+  font-size: clamp(2.2em, 2vw, 30vw);
   @include hd {
     font-size: clamp(3em, 2vw, 50vw);
   }
@@ -149,11 +149,11 @@ b {
       transform: translateY(0);
     }
     .izq {
-      @extend .sombra;
       order: 2;
     }
     .der {
       order: 1;
+      
     }
   }
 }
@@ -166,4 +166,15 @@ b {
     rgba(255, 255, 255, 1) 50%,
     rgba(255, 255, 255, 1) 100%
   );
+}
+
+.btn {
+  padding: 1rem $margen-cel;
+  color: white;
+  border: 1px solid white;
+  margin: 0.5rem 0.5rem 0.5rem 0;
+  @include cel {
+    width: 100%;
+    text-align: center;
+  }
 }

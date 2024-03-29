@@ -5,19 +5,34 @@ import Encabezados from "../components/Encabezados.astro";
 import ParrafosLibres from "../components/ParrafosLibres.astro";
 import Cartas from "../components/Cartas.astro";
 import Frase from "../components/Frase.astro";
-import BloqueMapa from "../components/BloqueMapa.astro";	
+import BloqueMapa from "../components/BloqueMapa.astro";
 import Regalos from "../components/Regalos.astro";
 import Contador from "../components/Contador.astro";
 import Confirmacion from "../components/Confirmacion.astro";
 import Footer from "../components/Footer.astro";
 
+import {id} from "../data/constantes"
+console.log(id)
+// datos del json
+const invitados = "Familia Hernández";
+const pases = 4;
+
 const novios = "Delia Guitierrez <br> y Oliver Maciel";
 const fecha = "sábado 23 de marzo del 2024";
-const fechaContador = '2024-04-27';
-const invitados = "familia Hernandez";
-const pases = 4;
+const fechaContador = "2024-04-27";
 const vestimenta = "formal";
-const whatsapp = 5217551048550
+const whatsapp = 5217551048550;
+// Mapa recepcion y ceremonia
+const horarioRecepcion = "18:30";
+const dirRecepcion =
+  "<b>Hotel SunScape Ixtapa </b>, Blvd. Paseo Ixtapa S/N-A, 40884 Zihuatanejo, Gro.";
+const latRecepcion = 17.661152;
+const lngRecepcion = -101.603728;
+const horarioCeremonia = "16:30";
+const dirCeremonia =
+  "<b>Iglesia de la Santa Cruz</b>, Calle Paseo de los Pelicanos 40883, Ixtapa Gro. (frente a la Moraleja)";
+const latCeremonia = 17.665128;
+const lngCeremonia = -101.597448;
 
 ---
 
@@ -53,34 +68,59 @@ const whatsapp = 5217551048550
   </section>
 
   <section class="grid contenido">
-    <Frase frase="De vez en cuando, justo en medio de una vida ordinaria, el amor nos regala un cuento de hadas." />
+    <Frase
+      frase="De vez en cuando, justo en medio de una vida ordinaria, el amor nos regala un cuento de hadas."
+    />
   </section>
 
   <Encabezados icono="/lugar-icono.svg" texto="EL LUGAR" />
   <section class="grid contenido fondo-mitad">
     <ParrafosLibres>
-      Te compartimos la ubicación, te esperamos en la ceremonia religiosa y en la recepción de nuestra boda
+      Te compartimos la ubicación, te esperamos en la ceremonia religiosa y en
+      la recepción de nuestra boda
     </ParrafosLibres>
-    <div id="zigzag" >
-        <BloqueMapa encabezado="Ceremonia" dir="Basilica de Santa Rosa, Calle 56 Col. Santiago, a un lado del Parque Siempre Verde" horario="16:30" lat={-34.6037} lng={-58.3816} mapName="mapa1"/>
-        <BloqueMapa encabezado="Recepción" dir="Calle 56 # 56 - 56" horario="18:30" lat={20.492900} lng={-87.243210} mapName="mapa2" />
+    <div id="zigzag">
+      <BloqueMapa
+        encabezado="Ceremonia"
+        dir={dirCeremonia}
+        horario={horarioCeremonia}
+        lat={latCeremonia}
+        lng={lngCeremonia}
+        mapName="mapa1"
+      />
+      <BloqueMapa
+        encabezado="Recepción"
+        dir={dirRecepcion}
+        horario={horarioRecepcion}
+        lat={latRecepcion}
+        lng={lngRecepcion}
+        mapName="mapa2"
+      />
     </div>
   </section>
-  
-  <section class="grid contenido">
-    <Regalos frase="El regalo más importante será tu presencia, te agradecemos si aparte nos deseas hacer un regalo en este día tan especial." beneficiario="Delia Ramirez" banco="Santander" cuenta="123456789" />
-  </section>
-
 
   <section class="grid contenido">
-    <Contador fecha = {fechaContador} />
+    <Regalos
+      frase="El regalo más importante será tu presencia, te agradecemos si aparte nos deseas hacer un regalo en este día tan especial."
+      beneficiario="Delia Ramirez"
+      banco="Santander"
+      cuenta="123456789"
+    />
   </section>
 
   <section class="grid contenido">
-    <Confirmacion whatsapp={whatsapp} pases={pases} nombre={invitados} dias_antes={7} />  
-  </section>
-  <section class="grid contenido">
-  <Footer />
+    <Contador fecha={fechaContador} />
   </section>
 
+  <section class="grid contenido">
+    <Confirmacion
+      whatsapp={whatsapp}
+      pases={pases}
+      nombre={invitados}
+      dias_antes={7}
+    />
+  </section>
+  <section class="grid contenido">
+    <Footer />
+  </section>
 </Layout>

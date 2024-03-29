@@ -13,13 +13,13 @@ const { cover, nombres, fecha, pases, invitados } = Astro.props;
 <section id="hero" class="grid contenido">
   <div class="bandeja">
     <div class="centro">
-      <span class="familia">{invitados}</span>
-      <h1 set:html={nombres}></h1>
+      <span class="familia" id="invitado">{invitados}</span>
+      <h1 set:html={nombres} />
       <p>desean invitarte a <b>celebrar su boda</b></p>
       <p class="fecha">{fecha}</p>
     </div>
     <div id="pases">
-      No. de pases: <span>{pases}</span>
+      No. de pases: <span id="NumeroPases">{pases}</span>
     </div>
   </div>
 </section>
@@ -30,6 +30,10 @@ const { cover, nombres, fecha, pases, invitados } = Astro.props;
     position: relative;
     grid-template-rows: 1fr 1fr 20%;
     height: 100dvh;
+    @include cel {
+      height: auto;
+      grid-template-rows: 1fr 1fr 30%;
+    }
     &::before {
       content: "";
       position: absolute;
@@ -56,12 +60,13 @@ const { cover, nombres, fecha, pases, invitados } = Astro.props;
     position: relative;
     padding: $margen-top $margen-min;
     @include cel {
-
+      padding: $margen-min;
+      max-height: content;
     }
   }
   span {
     border-bottom: solid 1px white;
-    padding:0 0 $margen-min 0;
+    padding: 0 0 $margen-min 0;
     margin-bottom: $margen-min;
     display: block;
   }
@@ -90,3 +95,19 @@ const { cover, nombres, fecha, pases, invitados } = Astro.props;
     }
   }
 </style>
+
+<script >
+  import invitadosData from "../data/invitados.json";
+  const datosInvitados = invitadosData
+  const valores = window.location.search
+  const params = new URLSearchParams(valores);
+  const id = params.get('id');
+  const invitados = datosInvitados[id].nombre
+  const pases = datosInvitados[id].pases
+  
+  const invitadoDom = document.getElementById('invitado')
+  const pasesDom = document.getElementById('NumeroPases')
+  invitadoDom.innerHTML = `Hola ${invitados}`
+  pasesDom.innerHTML = `${pases}`
+
+  </script>

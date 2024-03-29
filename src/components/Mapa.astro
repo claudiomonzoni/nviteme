@@ -11,6 +11,7 @@ const { lat, lng, mapName } = Astro.props;
 <style lang="scss">
   @import "../estilos/_variables.scss";
     #mapa1, #mapa2 {
+      @extend .sombra;
         height: 22dvw;
         @include cel {
           height: 70dvw;
