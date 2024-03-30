@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
+// import Hero from "../components/Hero.astro";
+import Hero from "../components/Hero.jsx";
 import Encabezados from "../components/Encabezados.astro";
 import ParrafosLibres from "../components/ParrafosLibres.astro";
 import Cartas from "../components/Cartas.astro";
@@ -11,8 +12,6 @@ import Contador from "../components/Contador.astro";
 import Confirmacion from "../components/Confirmacion.astro";
 import Footer from "../components/Footer.astro";
 
-import {id} from "../data/constantes"
-console.log(id)
 // datos del json
 const invitados = "Familia Hernández";
 const pases = 4;
@@ -38,11 +37,10 @@ const lngCeremonia = -101.597448;
 
 <Layout title="Invitación de boda.">
   <Hero
-    cover={"/cover.jpg"}
     nombres={novios}
     fecha={fecha}
-    invitados={invitados}
-    pases={pases}
+  
+    client:load
   />
   <Encabezados icono="/evento-icono.svg" texto="EL EVENTO" />
   <ParrafosLibres>

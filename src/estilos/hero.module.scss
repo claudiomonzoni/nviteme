@@ -1,0 +1,72 @@
+
+  @import "../estilos/_variables.scss";
+  #hero {
+    position: relative;
+    grid-template-rows: 1fr 1fr 20%;
+    height: 100dvh;
+    @include cel {
+      height: auto;
+      grid-template-rows: 1fr 1fr 30%;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      grid-row: 1 / span 2;
+      width: 100%;
+      height: 100%;
+      // background: url(var(--cover));
+      background: url("/cover.jpg") no-repeat;
+      background-size: cover;
+      background-position: center;
+    }
+  }
+
+  .bandeja {
+    grid-row: 2 / -1;
+    background: url(./patron-fondo.webp), $primario;
+    background-blend-mode: color-dodge;
+    text-align: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: clamp(1.2rem, 1vw, 3vw);
+    position: relative;
+    padding: $margen-top $margen-min;
+    @include cel {
+      padding: $margen-min;
+      max-height: content;
+    }
+  }
+  span {
+    border-bottom: solid 1px white;
+    padding: 0 0 $margen-min 0;
+    margin-bottom: $margen-min;
+    display: block;
+  }
+  .familia {
+    font-family: "Italiana", sans-serif;
+    font-size: clamp(1.5rem, 3vw, 6vw);
+  }
+  .fecha {
+    color: $acento;
+    font-family: "Italiana", sans-serif;
+    font-size: clamp(2rem, 3vw, 6vw);
+  }
+  #pases {
+    font-family: "Italiana", sans-serif;
+    background: $secundario;
+    padding: 2rem;
+    position: absolute;
+    bottom: -5rem;
+    @extend .sombra;
+    span {
+      font-size: clamp(2.5rem, 2vw, 5vw);
+    }
+    @include cel {
+      bottom: -6rem;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+  }
+
