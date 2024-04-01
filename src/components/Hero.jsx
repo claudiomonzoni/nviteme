@@ -4,15 +4,17 @@ import Style from "../estilos/hero.module.scss";
 import invitadosData from "../data/invitados.json";
 
 export default function Hero({ nombres, fecha }) {
-  const [invitado, setInvitado] = useState("sin datos");
+  const [invitado, setInvitado] = useState("ID inexistente");
   const [pase, setPase] = useState(0);
   useEffect(() => {
-    const datosInvitados = invitadosData;
+    console.log()
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
-    setInvitado(datosInvitados[id].nombre);
-    setPase(datosInvitados[id].pases);
+    if(id <= invitadosData.length){
+      setInvitado(invitadosData[id].nombre);
+      setPase(invitadosData[id].pases);
+    }
   });
   return (
     <>

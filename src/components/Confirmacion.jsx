@@ -5,15 +5,22 @@ import invitadosData from "../data/invitados.json";
 export default function Confirmacion({ whatsapp, dias_antes }) {
   const [invitado, setInvitado] = useState("sin datos");
   const [pases, setPases] = useState(0);
+  const [id, setId] = useState(0);
 
     
   useEffect(() => {
-    const datosInvitados = invitadosData;
+
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
-    setInvitado(datosInvitados[id].nombre);
-    setPases(datosInvitados[id].pases);
+    if(id <= invitadosData.length){
+      setInvitado(invitadosData[id].nombre);
+      setPases(invitadosData[id].pases);
+      setId(id);
+    }else{
+      alert("ID inválido bloquea el btn");
+      // bloquear el boton
+    }
     const pasesInput = document.querySelector("#Confipases");
     const generarPases = () => {
       for (let i = 1; i <= pases; i++) {
