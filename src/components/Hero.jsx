@@ -13,8 +13,6 @@ export default function Hero({ nombres, fecha }) {
     const id = params.get("id");
     setInvitado(datosInvitados[id].nombre);
     setPase(datosInvitados[id].pases);
-
-    
   });
   return (
     <>

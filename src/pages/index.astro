@@ -9,7 +9,7 @@ import Frase from "../components/Frase.astro";
 import BloqueMapa from "../components/BloqueMapa.astro";
 import Regalos from "../components/Regalos.astro";
 import Contador from "../components/Contador.astro";
-import Confirmacion from "../components/Confirmacion.astro";
+import Confirmacion from "../components/Confirmacion";
 import Footer from "../components/Footer.astro";
 
 // datos del json
@@ -110,12 +110,11 @@ const lngCeremonia = -101.597448;
     <Contador fecha={fechaContador} />
   </section>
 
-  <section class="grid contenido">
+  <section >
     <Confirmacion
       whatsapp={whatsapp}
-      pases={pases}
-      nombre={invitados}
       dias_antes={7}
+      client:only
     />
   </section>
   <section class="grid contenido">
