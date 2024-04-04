@@ -1,25 +1,45 @@
 ---
 interface Props {
-    icono: string;
-    texto: string;
+  icono: string;
+  texto: string;
 }
-const {icono, texto} = Astro.props;
+const { icono, texto } = Astro.props;
 ---
-<div class="titulo">
 
-    <img src={icono} alt={texto}>
-    <h2>{texto}</h2>
-    
+<div class="titulo">
+  <img src={icono} alt={texto} />
+  <h2>{texto}</h2>
 </div>
 
 <style lang="scss">
-    @import '../estilos/_variables.scss';
-    .titulo{
-        margin: $margen-top $margen $margen-cel $margen;
-        text-align: center;
+  @import "../estilos/_variables.scss";
+  .titulo {
+    margin: $margen-top $margen $margen-cel $margen;
+    text-align: center;
+    h2 {
+      color: $secundario;
     }
-    img{
-        margin: $margen-min;
-    }
- 
+  }
+  img {
+    margin: $margen-min;
+  }
 </style>
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  let tl = gsap.timeline({ repeat: 0 });
+  gsap.registerPlugin(ScrollTrigger);
+
+  tl.from(".titulo img", {
+    scrollTrigger: ".titulo img",
+    y: 30,
+    opacity: 0,
+  });
+  tl.from(".titulo h2", {
+    delay: -0.5,
+    scrollTrigger: ".titulo h2",
+    stagger: 0.3,
+    y: 20,
+    opacity: 0,
+  });
+</script>

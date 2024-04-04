@@ -11,7 +11,7 @@ export default function Hero({ nombres, fecha }) {
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
-    if(id <= invitadosData.length){
+    if(id <= invitadosData.length && id){
       setInvitado(invitadosData[id].nombre);
       setPase(invitadosData[id].pases);
     }

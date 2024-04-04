@@ -13,12 +13,12 @@ export default function Confirmacion({ whatsapp, dias_antes }) {
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
-    if(id <= invitadosData.length){
+    if(id <= invitadosData.length && id){
       setInvitado(invitadosData[id].nombre);
       setPases(invitadosData[id].pases);
       setId(id);
     }else{
-      alert("ID inválido bloquea el btn");
+      alert(btnconfirmar.classList.add("desabilitar"));	
       // bloquear el boton
     }
     const pasesInput = document.querySelector("#Confipases");

@@ -40,8 +40,7 @@
   }
   span {
     border-bottom: solid 1px white;
-    padding: 0 0 $margen-min 0;
-    margin-bottom: $margen-min;
+   
     display: block;
   }
   .familia {
@@ -56,9 +55,9 @@
   #pases {
     font-family: "Italiana", sans-serif;
     background: $secundario;
-    padding: 2rem;
+    padding: 1rem;
     position: absolute;
-    bottom: -5rem;
+    bottom: -4rem;
     @extend .sombra;
     span {
       font-size: clamp(2.5rem, 2vw, 5vw);
