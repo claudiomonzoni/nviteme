@@ -7,7 +7,7 @@ const { icono, texto } = Astro.props;
 ---
 
 <div class="titulo">
-  <img src={icono} alt={texto} />
+  <img src={icono} alt={texto} /> <br>
   <h2>{texto}</h2>
 </div>
 
@@ -25,5 +25,50 @@ const { icono, texto } = Astro.props;
   }
 </style>
 <script>
+  import SplitType from "split-type";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  // split text
 
+
+  // animacion al scroll
+  gsap.registerPlugin(ScrollTrigger);
+  
+  const titulo = gsap.utils.toArray(".titulo");
+  const img = gsap.utils.toArray(".titulo img");
+  
+  titulo.forEach((ele , id) => {
+
+
+    const texto = new SplitType(ele as HTMLElement, {
+      types: "chars",
+    });
+
+    
+    gsap.from(img[id] as HTMLElement, {
+      scrollTrigger: {
+        trigger: img[id] as HTMLElement,
+        start: "top 100%",
+        end: "bottom 70%",
+      },
+      ease: "power2.out",
+      y: -30,
+      opacity: 0,
+      delay: 0.7,
+    });
+
+    gsap.from(texto.chars, {
+      scrollTrigger: {
+        trigger: ele as HTMLElement,
+        start: "top 100%",
+        end: "bottom 70%",
+      },
+      // scaleY: .5,
+      delay: 1,
+      ease: "power2.out",
+      y: -30,
+      opacity: 0,
+      stagger: 0.1,
+    });
+  });
 </script>
