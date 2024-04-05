@@ -7,18 +7,18 @@ export default function Confirmacion({ whatsapp, dias_antes }) {
   const [pases, setPases] = useState(0);
   const [id, setId] = useState(0);
 
-    
   useEffect(() => {
-
+    const comentarios = document.getElementById("comentarios");
+    const btnconfirmar = document.getElementById("btnconfirmar");
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
-    if(id <= invitadosData.length && id){
+    if (id <= invitadosData.length && id) {
       setInvitado(invitadosData[id].nombre);
       setPases(invitadosData[id].pases);
       setId(id);
-    }else{
-      alert(btnconfirmar.classList.add("desabilitar"));	
+    } else {
+      alert('Error en ID de invitado');
       // bloquear el boton
     }
     const pasesInput = document.querySelector("#Confipases");
@@ -26,62 +26,45 @@ export default function Confirmacion({ whatsapp, dias_antes }) {
       for (let i = 1; i <= pases; i++) {
         pasesInput.innerHTML += `<option value="Numero de pases: ${i}">${i}</option>`;
       }
-   
     };
     generarPases();
 
+    // whatsapp
 
-     // whatsapp
+    // import moment from "moment";
 
-  // import moment from "moment";
+    //user agent
+    const ua = navigator.userAgent;
 
+    //si es cel app si es pc web.app
+    const enviar = (e) => {
+      e.preventDefault();
 
-const comentarios = document.getElementById("comentarios");
-const btnconfirmar = document.getElementById("btnconfirmar");
+      if (pasesInput.value ) {
+        btnconfirmar.classList.remove("desactivado");
+      } else {
+        console.log("vacio");
+      }
+      //comprobar si es cel o pc
+      let whats = "";
+      if (/Mobile/i.test(ua)) {
+        whats = `https://api.whatsapp.com/send/?phone=${whatsapp}&text=`;
+      } else {
+        whats = `https://web.whatsapp.com/send/?phone=${whatsapp}&text=`;
+      }
 
+      envio(whats, pasesInput.value, comentarios.value);
+    };
 
-
-//user agent
-const ua = navigator.userAgent;
-
-//si es cel app si es pc web.app
-const enviar = (e) => {
-  e.preventDefault();
-
-
-  if (
-  pasesInput.value === "" 
-  ) {
-    console.log("vacio");
-  } else {
-    btnconfirmar.classList.remove("desactivado");
-  }
-  //comprobar si es cel o pc
-  let whats = "";
-  if (/Mobile/i.test(ua)) {
-    whats = `https://api.whatsapp.com/send/?phone=${whatsapp}&text=`;
-  } else {
-    whats = `https://web.whatsapp.com/send/?phone=${whatsapp}&text=`;
-  }
-
-
-  envio( whats, pasesInput.value, comentarios.value);
-};
-
-const envio = ( whats, pasesInput, comentarios) => {
-
-  const url = `
+    const envio = (whats, pasesInput, comentarios) => {
+      const url = `
   ${whats}Hola,%20les%20confirmo%20la%20asistencia%20a%20la%20boda%20de:%20${invitado},%20y%20usaremos:%0a${pasesInput}.%0aComentarios:%20${comentarios}.`;
 
-  btnconfirmar.href = url;
-  
-};
+      btnconfirmar.href = url;
+    };
 
-pasesInput.addEventListener("focusout", enviar);
-comentarios.addEventListener("focusout", enviar);
-
-
-
+    pasesInput.addEventListener("focusout", enviar);
+    comentarios.addEventListener("focusout", enviar);
   });
   return (
     <>
@@ -108,7 +91,7 @@ comentarios.addEventListener("focusout", enviar);
               </select>
               <label for="comentarios">Envíanos comentarios (opcional):</label>
               <textarea name="comentarios" id="comentarios"></textarea>
-              <a href="#" className="btn" id="btnconfirmar">
+              <a href="#" className="btn desactivado" id="btnconfirmar">
                 Confirmar
               </a>
             </form>

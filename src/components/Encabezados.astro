@@ -25,21 +25,5 @@ const { icono, texto } = Astro.props;
   }
 </style>
 <script>
-  import gsap from "gsap";
-  import { ScrollTrigger } from "gsap/ScrollTrigger";
-  let tl = gsap.timeline({ repeat: 0 });
-  gsap.registerPlugin(ScrollTrigger);
 
-  tl.from(".titulo img", {
-    scrollTrigger: ".titulo img",
-    y: 30,
-    opacity: 0,
-  });
-  tl.from(".titulo h2", {
-    delay: -0.5,
-    scrollTrigger: ".titulo h2",
-    stagger: 0.3,
-    y: 20,
-    opacity: 0,
-  });
 </script>

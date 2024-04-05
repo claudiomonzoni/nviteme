@@ -1,23 +1,49 @@
 ---
 interface Props {
-    frase: string;	
+  frase: string;
 }
- const { frase } = Astro.props;
+const { frase } = Astro.props;
 ---
 
 <p class="frase">
-    {frase}
+  {frase}
 </p>
 <style lang="scss">
-    @import "../estilos/_variables.scss";
-    .frase{
-        color: $primario;
-        font-family: 'Italiana', serif;
-        font-size: clamp(3rem, 5vw, 7vw);
-        text-align: center;
-        margin: $margen-top $margen-min 0 $margen-min;
-        padding: $margen $margen-min;
-        border-top: 1px solid $primario;
-        border-bottom: 1px solid $primario;
-    }
+  @import "../estilos/_variables.scss";
+  .frase {
+    color: $primario;
+    font-family: "Italiana", serif;
+    font-size: clamp(3rem, 5vw, 7vw);
+    text-align: center;
+    margin: $margen-top $margen-min 0 $margen-min;
+    padding: $margen $margen-min;
+    border-top: 1px solid $primario;
+    border-bottom: 1px solid $primario;
+  }
 </style>
+<script>
+  import SplitType from "split-type";
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+  // split text
+  const frase = document.querySelector(".frase") as HTMLElement;
+  const texto = new SplitType(frase, {
+    types: "words",
+  });
+  // animacion al scroll
+  gsap.registerPlugin(ScrollTrigger);
+  
+  gsap.from(texto.words, {
+    scrollTrigger: {
+      trigger: frase,
+      start: "top 100%",
+      end: "bottom 70%",
+      scrub: true,
+      markers: true,
+    },
+    // scaleY: .5,
+    y: -20,
+    opacity: 0,
+    stagger: 0.1,
+  });
+</script>
