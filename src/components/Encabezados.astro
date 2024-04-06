@@ -16,6 +16,9 @@ const { icono, texto } = Astro.props;
   .titulo {
     margin: $margen-top $margen $margen-cel $margen;
     text-align: center;
+    @include cel {
+      margin: $margen-cel $margen-min $margen-min $margen-min;
+    }
     h2 {
       color: $secundario;
     }

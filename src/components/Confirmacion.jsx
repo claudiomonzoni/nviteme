@@ -18,7 +18,7 @@ export default function Confirmacion({ whatsapp, dias_antes }) {
       setPases(invitadosData[id].pases);
       setId(id);
     } else {
-      alert('Error en ID de invitado');
+      // alert('Error en ID de invitado');
       // bloquear el boton
     }
     const pasesInput = document.querySelector("#Confipases");

@@ -37,9 +37,10 @@ const { frase } = Astro.props;
  gsap.from(texto.words, {
     scrollTrigger: {
       trigger: frase,
-      start: "top 100%",
+      start: "top 90%",
       end: "bottom 70%",
       scrub: true,
+      markers: true,
     },
     // scaleY: .5,
     ease: "power2.out",

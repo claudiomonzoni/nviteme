@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// import '../estilos/hero.module.scss'
+import gsap from "gsap";
 import Style from "../estilos/hero.module.scss";
 import invitadosData from "../data/invitados.json";
 
@@ -7,7 +7,7 @@ export default function Hero({ nombres, fecha }) {
   const [invitado, setInvitado] = useState("ID inexistente");
   const [pase, setPase] = useState(0);
   useEffect(() => {
-    console.log()
+    // confirmacion de id
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
@@ -15,13 +15,18 @@ export default function Hero({ nombres, fecha }) {
       setInvitado(invitadosData[id].nombre);
       setPase(invitadosData[id].pases);
     }
+    // animacion intro   
+    const tl = gsap.timeline();
+    tl.from(".contenido", { opacity: 0, duration: 1, delay: .2 });
+    tl.from("#bande", { opacity: 0, y:-30,  height: 500, duration: 1, ease: "power4.out" });
+    tl.from("#centro *", { opacity: 0, y:-30, duration: 1, ease: "power4.out", stagger: { amount: .5 } });
   });
   return (
     <>
       <section id={Style["hero"]} className="grid contenido">
-        <div className={Style.bandeja}>
-          <div className={Style.centro}>
-            <span className={Style.familia} id="invitado ">
+        <div className={Style.bandeja} id="bande">
+          <div className={Style.centro} id="centro">
+            <span className={Style.familia} id="invitado">
               {invitado}
             </span>
             <h1 dangerouslySetInnerHTML={{__html: nombres}}></h1>

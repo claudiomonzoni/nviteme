@@ -38,9 +38,12 @@
       max-height: content;
     }
   }
+  h1{
+    padding-top: $margen-min;
+  }
   span {
+    padding-bottom: $margen-min;
     border-bottom: solid 1px white;
-   
     display: block;
   }
   .familia {
