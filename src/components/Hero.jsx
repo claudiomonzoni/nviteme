@@ -11,16 +11,17 @@ export default function Hero({ nombres, fecha }) {
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
+    // animacion intro   
     if(id <= invitadosData.length && id){
       setInvitado(invitadosData[id].nombre);
       setPase(invitadosData[id].pases);
     }
-    // animacion intro   
     const tl = gsap.timeline();
-    tl.from(".contenido", { opacity: 0, duration: 1, delay: .2 });
+    console.log(tl)
+    gsap.from(".contenido", { opacity: 0, duration: 1, delay: .2 });
     tl.from("#bande", { opacity: 0, y:-30,  height: 500, duration: 1, ease: "power4.out" });
     tl.from("#centro *", { opacity: 0, y:-30, duration: 1, ease: "power4.out", stagger: { amount: .5 } });
-  });
+  },[]);
   return (
     <>
       <section id={Style["hero"]} className="grid contenido">
