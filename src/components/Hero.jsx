@@ -17,7 +17,6 @@ export default function Hero({ nombres, fecha }) {
       setPase(invitadosData[id].pases);
     }
     const tl = gsap.timeline();
-    console.log(tl)
     gsap.from(".contenido", { opacity: 0, duration: 1, delay: .2 });
     tl.from("#bande", { opacity: 0, y:-30,  height: 500, duration: 1, ease: "power4.out" });
     tl.from("#centro *", { opacity: 0, y:-30, duration: 1, ease: "power4.out", stagger: { amount: .5 } });
