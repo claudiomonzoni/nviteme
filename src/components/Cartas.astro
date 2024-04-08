@@ -58,7 +58,7 @@ const { icono, titulo } = Astro.props;
   const carta = gsap.utils.toArray(".carta");
   gsap.registerPlugin(ScrollTrigger);
 
-  carta.forEach((cart, id) => {
+  carta.forEach((cart : HTMLElement , id) => {
     let mm = gsap.matchMedia();
   
 
@@ -91,7 +91,7 @@ const { icono, titulo } = Astro.props;
           start: "top 50%",
           end: "bottom 20%",
           scrub: true,
-          markers: true,
+     
         }
     });
       // mobile setup code here...

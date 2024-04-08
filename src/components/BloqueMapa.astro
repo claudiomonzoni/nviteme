@@ -38,7 +38,7 @@ import Mapa from "./Mapa.astro";
   @import "../estilos/_variables.scss";
   h3 {
     color: $secundario;
-    font-size: clamp(1.5rem, 2.5vw, 3rem);
+    font-size: clamp(2.5rem, 2.5vw, 3rem);
   }
 
   .bloqueMapa {
@@ -84,3 +84,63 @@ import Mapa from "./Mapa.astro";
     }
   }
 </style>
+
+
+
+<script>
+  import gsap from "gsap";
+  import ScrollTrigger from "gsap/ScrollTrigger";
+
+  const bloqueMapa = gsap.utils.toArray(".bloqueMapa");
+  gsap.registerPlugin(ScrollTrigger);
+
+  bloqueMapa.forEach((bMapa : HTMLElement , id) => {
+    let mm = gsap.matchMedia();
+  
+
+    mm.add("(min-width: 800px)", () => {
+      // desktop setup code here...
+      const tl = gsap.timeline({
+      scrollTrigger: {
+          trigger: bMapa as HTMLElement,
+          start: "top 100%",
+          end: "bottom 60%",
+          scrub: true,
+        }
+    });
+      tl.from(bMapa as HTMLElement, {
+        ease: "power2.out",
+        x: -30,
+        opacity: 0,
+        delay: 0.3,
+      });
+      tl.from(bMapa.children , {
+        opacity: 0,
+        y: -50,
+        stagger: 0.5,
+      });
+    });
+
+    mm.add("(max-width: 799px)", () => {
+      const tl = gsap.timeline({
+      scrollTrigger: {
+          trigger: bMapa as HTMLElement,
+          start: "top 70%",
+          end: "bottom 40%",
+          scrub: true,
+        }
+    });
+      // mobile setup code here...
+      tl.from(bMapa as HTMLElement, {
+        ease: "power2.out",
+        y: -60,
+      });
+      tl.from(bMapa.children, {
+        opacity: 0,
+        y: 120,
+        delay: -0.3,
+        stagger: 0.2,
+      });
+    });
+  });
+</script>
