@@ -16,8 +16,8 @@ import Footer from "../components/Footer.astro";
 const invitados = "Familia Hernández";
 const pases = 4;
 
-const novios = "Delia Guitierrez <br> y Oliver Maciel";
-const fecha = "sábado 23 de marzo del 2024";
+const novios = "Delia y Oliver ";
+const fecha = "sábado 27 de abril del 2024";
 const fechaContador = "2024-04-27";
 const vestimenta = "formal";
 const whatsapp = 5217551048550;
@@ -34,13 +34,11 @@ const latCeremonia = 17.665128;
 const lngCeremonia = -101.597448;
 ---
 
-<Layout title="Invitación de boda.">
+<Layout title=`Invitación de boda de ${novios}`>
   <Hero nombres={novios} fecha={fecha} client:load />
-  <Encabezados icono="/evento-icono.svg" texto="EL EVENTO" />
+  <Encabezados icono="/evento-icono.svg" texto="NUESTRA BODA" />
   <ParrafosLibres>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Possimus eligendi
-    fugiat voluptas sint, mollitia consequuntur. Assumenda eaque excepturi
-    mollitia doloremque laborum debitis earum!
+    Daremos el “sí quiero”, seguiremos este emocionante viaje juntos y nos encantaría que nos acompañes a celebrar la gran fiesta de nuestra boda.
   </ParrafosLibres>
   <section class="grid contenido">
     <div class="conte-cartas">

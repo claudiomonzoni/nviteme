@@ -20,6 +20,9 @@
       background-position: center;
     }
   }
+  .opacidad {
+    opacity: 0;
+  }
 
   .bandeja {
     grid-row: 2 / -1;
@@ -39,7 +42,7 @@
     }
   }
   h1{
-    padding-top: $margen-min;
+    padding: $margen-min 0 $margen-min 0;
   }
   span {
     padding-bottom: $margen-min;
