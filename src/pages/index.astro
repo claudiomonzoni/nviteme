@@ -11,6 +11,7 @@ import Regalos from "../components/Regalos.astro";
 import Contador from "../components/Contador.astro";
 import Confirmacion from "../components/Confirmacion";
 import Footer from "../components/Footer.astro";
+import Galeria from "../components/Galeria.astro";
 
 // datos del json
 const invitados = "Familia Hernández";
@@ -105,18 +106,20 @@ const lngCeremonia = -101.597448;
   <section>
     <Confirmacion whatsapp={whatsapp} dias_antes={7} client:only />
   </section>
+  <!-- galeria -->
+  <section class="grid pantalla">
+    <Galeria />
+  </section>
+
+  <!-- footer -->
   <section class="grid contenido">
     <Footer />
   </section>
+
 </Layout>
 <script>
   import Lenis from "@studio-freight/lenis";
   const lenis = new Lenis();
-
-  // lenis.on('scroll', (e) => {
-  //   console.log(e)
-  // })
-
   function raf(time) {
     lenis.raf(time);
     requestAnimationFrame(raf);
