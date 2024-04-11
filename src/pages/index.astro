@@ -16,7 +16,7 @@ import Galeria from "../components/Galeria.astro";
 // datos del json
 const invitados = "Familia Hernández";
 const pases = 4;
-
+// datos del evento
 const novios = "Delia y Oliver ";
 const fecha = "sábado 27 de abril del 2024";
 const fechaContador = "2024-04-27";
@@ -33,9 +33,11 @@ const dirCeremonia =
   "<b>Iglesia de la Santa Cruz</b>, Calle Paseo de los Pelicanos 40883, Ixtapa Gro. (frente a la Moraleja)";
 const latCeremonia = 17.665128;
 const lngCeremonia = -101.597448;
+// open graph
+const url = "https://nvite.me/boda-delia-y-oliver";
 ---
 
-<Layout title=`Invitación de boda de ${novios}`>
+<Layout title=`Invitación de boda de ${novios}` url={url}>
   <Hero nombres={novios} fecha={fecha} client:load />
   <Encabezados icono="/evento-icono.svg" texto="NUESTRA BODA" />
   <ParrafosLibres>
