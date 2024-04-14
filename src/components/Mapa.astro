@@ -37,4 +37,11 @@ const { lat, lng, mapName } = Astro.props;
       fillOpacity: 0.5,
       radius: 100,
     }).addTo(map);
+
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+if (isMobile) {
+
+  map.dragging.disable();
+}
+    map.scrollWheelZoom.disable();
   </script>

@@ -113,8 +113,7 @@ a {
   display: inline-block;
   @extend .anime;
   &:hover {
-    color: $secundario;
-    transform: scale(1.1);
+    transform: scale(0.9);
   }
 }
 p {
@@ -197,6 +196,11 @@ b {
   @include cel {
     width: 100%;
     text-align: center;
+  }
+  &:hover {
+    background: white;
+    border-radius: $margen-min;
+    color: $primario;
   }
 }
 .desactivado {
