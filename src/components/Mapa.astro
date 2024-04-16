@@ -26,16 +26,16 @@ const { lat, lng, mapName } = Astro.props;
 />
 <script src="/leaflet.js" is:inline></script>
 <script define:vars={{ lat, lng, mapName }}>
-    var map = L.map(mapName).setView([lat, lng], 15);
+    var map = L.map(mapName).setView([lat, lng], 17);
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-      maxZoom: 19,
+      maxZoom: 27,
  
     }).addTo(map);
     var circle = L.circle([lat, lng], {
       color: "red",
       fillColor: "#E76128",
       fillOpacity: 0.5,
-      radius: 100,
+      radius: 30,
     }).addTo(map);
 
     const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);

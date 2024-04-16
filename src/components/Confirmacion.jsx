@@ -13,7 +13,7 @@ export default function Confirmacion({ whatsapp, dias_antes }) {
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
-    if (id <= invitadosData.length && id) {
+    if (id < invitadosData.length && id) {
       setInvitado(invitadosData[id].nombre);
       setPases(invitadosData[id].pases);
       setId(id);

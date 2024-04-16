@@ -12,6 +12,8 @@ import Contador from "../components/Contador.astro";
 import Confirmacion from "../components/Confirmacion";
 import Footer from "../components/Footer.astro";
 import Galeria from "../components/Galeria.astro";
+import Itinerario from "../components/Itinerario.astro";
+import BloqueVenta from "../components/BloqueVenta.astro";
 
 // datos del json
 const invitados = "Familia Hernández";
@@ -22,6 +24,7 @@ const fecha = "sábado 27 de abril del 2024";
 const fechaContador = "2024-04-27";
 const vestimenta = "formal";
 const whatsapp = 5217551048550;
+const frase_amor = "De vez en cuando, justo en medio de una vida ordinaria, el amor nos regala un cuento de hadas."
 // Mapa recepcion y ceremonia
 const horarioRecepcion = "18:30";
 const dirRecepcion =
@@ -33,6 +36,45 @@ const dirCeremonia =
   "<b>Iglesia de la Santa Cruz</b>, Calle Paseo de los Pelicanos 40883, Ixtapa Gro. (frente a la Moraleja)";
 const latCeremonia = 17.665128;
 const lngCeremonia = -101.597448;
+//itinerario
+const iterario= [
+  {
+    titulo: "Ceremonia Religiosa",
+    lugar: "Iglesa de la Santa Cruz, Ixtapa Gro.",
+    hora: "16:30"
+  },
+  {
+    titulo: "Recepción",
+    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    hora: "18:30"
+  },
+  {
+    titulo: "Mariachi en vivo",
+    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    hora: "20:00"
+  },
+  {
+    titulo: "Baile de los novios",
+    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    hora: "22:30"
+  },
+  {
+    titulo: "Cena y Brindis",
+    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    hora: "23:00"
+  },
+  {
+    titulo: "Cierre del evento",
+    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    hora: "3:00"
+  }
+  
+
+]
+// regalos
+const beneficiario = "Delia Ramirez";
+const banco = "Banco Santander";
+const cuenta = "123456789";
 // open graph
 const url = "https://nvite.me/boda-delia-y-oliver";
 ---
@@ -62,7 +104,7 @@ const url = "https://nvite.me/boda-delia-y-oliver";
 
   <section class="grid contenido">
     <Frase
-      frase="De vez en cuando, justo en medio de una vida ordinaria, el amor nos regala un cuento de hadas."
+      frase={frase_amor}
     />
   </section>
 
@@ -92,12 +134,16 @@ const url = "https://nvite.me/boda-delia-y-oliver";
     </div>
   </section>
 
+  <Encabezados icono="/lugar-icono.svg" texto="ITINERARIO" />
+    <Itinerario listado={iterario} />
+
+
   <section class="grid contenido">
     <Regalos
       frase="El regalo más importante será tu presencia, te agradecemos si aparte nos deseas hacer un regalo en este día tan especial."
-      beneficiario="Delia Ramirez"
-      banco="Santander"
-      cuenta="123456789"
+      beneficiario={beneficiario}
+      banco={banco}
+      cuenta={cuenta}
     />
   </section>
 
@@ -118,6 +164,8 @@ const url = "https://nvite.me/boda-delia-y-oliver";
     <Footer />
   </section>
 
+  <!-- Borrar el bloque de ventas -->
+  <BloqueVenta costo={1600} />
 </Layout>
 <script>
   import Lenis from "@studio-freight/lenis";

@@ -13,7 +13,6 @@ export default function Hero({ nombres, fecha }) {
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
     const id = params.get("id");
-    console.log(id)
     // animacion intro
     if ( id && id < invitadosData.length) {
       setInvitado(invitadosData[id].nombre);
