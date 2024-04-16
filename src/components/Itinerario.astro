@@ -71,6 +71,7 @@ const { listado } = Astro.props;
     scroll-snap-type: inline mandatory;
     display: grid;
     grid-auto-flow: column;
+    padding-bottom: $margen-min;
 
   }
   li {
@@ -81,7 +82,7 @@ const { listado } = Astro.props;
     text-align: center;
     color: white;
     padding: $margen;
-    margin: 2rem;
+    margin-right: 0.5rem;
     width: fit-content;
     font-size: clamp(1rem, 1.5vw, 2vw);
     background-color: $primario;
