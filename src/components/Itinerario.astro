@@ -4,83 +4,119 @@ interface Props {
 }
 const { listado } = Astro.props;
 ---
-<section class="grid pantalla" id="riel">
 
+<section class="grid pantalla" id="riel">
     <ol>
-        {
-            listado.map((item, index) => (
-                <li>
-                    <h4>{item.titulo}</h4>
-                    <p>{item.lugar}</p>
-                    <p>{item.hora}</p>
-                    </li>
-                ))
-            }
-</ol>
+      {
+        listado.map((item, index) => (
+          <li>
+            <h4>{item.titulo}</h4>
+            <p>{item.lugar}</p>
+            <p>{item.hora}</p>
+          </li>
+        ))
+      }
+    </ol>
+
 </section>
 
 <style lang="scss">
   @import "../estilos/_variables.scss";
 
-  #riel{
-    position: relative;
-    background-color: $primario;
-   
-    padding: $margen;
-}
-ol {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: grid;
-    align-items: center;
-    grid-auto-flow: column;
-    overflow: hidden;
-    gap: $margen;
+  
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: $primario $secundario;
+  }
 
-}
-li {
- 
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+  *::-webkit-scrollbar-track {
+    border-radius: 5px;
+    background-color: $terciario;
+  }
+
+  *::-webkit-scrollbar-track:hover {
+    background-color: $terciario;
+  }
+
+  *::-webkit-scrollbar-track:active {
+    background-color: $terciario;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: $primario;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: $acento;
+  }
+
+  *::-webkit-scrollbar-thumb:active {
+    background-color: $secundario;
+  }
+
+  #riel {
+
+  }
+  ol {
+    list-style: none;
+    overflow-x: auto;
+    overflow-behavior-inline: contain;
+    scroll-snap-type: inline mandatory;
+    display: grid;
+    grid-auto-flow: column;
+
+  }
+  li {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     color: white;
-      padding: $margen;
-      width: 100vw;
-      height: fit-content;
-      font-size:clamp(1.5rem, 2vw, 3vw);
-    }
-    h4{
-      font-size:clamp(2.5rem, 3vw, 4vw);
-      color: white;
+    padding: $margen;
+    margin: 2rem;
+    width: fit-content;
+    font-size: clamp(1rem, 1.5vw, 2vw);
+    background-color: $primario;
+  }
+  h4 {
+    font-size: clamp(2.5rem, 3vw, 4vw);
+    color: white;
   }
 </style>
-
+<!-- 
 <script>
   import gsap from "gsap";
   import ScrollTrigger from "gsap/ScrollTrigger";
 
-
   gsap.registerPlugin(ScrollTrigger);
 
+  const li = gsap.utils.toArray(" ol li");
+  const riel = document.querySelector("#riel");
 
-  const li = gsap.utils.toArray("#riel ol li");
-  const riel = document.querySelector("#riel ol");
-
-
- gsap.to(li, {
+  gsap.to(li, {
     xPercent: -100 * (li.length - 1),
     ease: "none",
     scrollTrigger: {
       trigger: riel,
       pin: true,
       start: "center center center",
-      scrub: true,
       end: "+=3000",
-      snap: {
-        snapTo: 1 / (li.length - 1),
-        duration: .7,
-        delay: 0.6,
-        ease: "power1.inOut",
-      },
-      // markers: true,
+      scrub: 1,
+        snap: {
+          snapTo: 1 / (li.length - 1),
+          duration: 0.7,
+          delay: 0.6,
+          ease: "power1.inOut",
+        },
+      markers: true,
     },
   });
-</script>
+</script> -->
