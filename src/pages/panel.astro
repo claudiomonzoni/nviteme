@@ -150,15 +150,16 @@ function modificarLocalStorage(id, copiado, confirmado, limpiado) {
             }
       
         
-    //             console.log(invitadosData[id])
-    invitadosData.push(JSON.stringify(invitado));
+                console.log(invitadosData)
+    invitadosData.push(invitado);
     localStorage.setItem('invitados', JSON.stringify(invitadosData));
 
 
 }
 
-const invitadosData = JSON.parse(localStorage.getItem('invitados'))
-// const invitadosData = localStorage.getItem('invitados')
+
+let invitadosData = JSON.parse(localStorage.getItem('invitados'))
+// invitadosData = []
 console.log( typeof invitadosData, invitadosData)
 
 
