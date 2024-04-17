@@ -1,0 +1,166 @@
+---
+import Layout from "../layouts/Layout.astro";
+import invitadosData from "../data/invitados.json";
+const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
+
+---
+
+<Layout title="Panel de administración">
+  <div class="grid contenido">
+    <section id="panel">
+      <h1>Panel de invitados</h1>
+      <div id="explicalo">
+        <ul>
+            <li id="color-invitado">Invitación copiada</li>
+            <li id="color-confirmado">Invitado confirmado</li>
+        </ul>
+      </div>
+      <div id="invitados">
+        {
+          invitadosData.map((invitado, id) => (
+            <li data-id={id}>
+              <p>ID: {id} </p>
+              <h3>{invitado.nombre}</h3>
+              <p>Pases: {invitado.pases}</p>
+             <button id="copiar" value=`${dir}${id}`>copiar invitación</button>
+             <button id="confirmo">Confirmada asistencia</button>
+             <button id="reset">Reset</button>
+
+            </li>
+          ))
+        }
+      </div>
+    </section>
+  </div>
+</Layout>
+<style lang="scss">
+  @import "../estilos/_variables.scss";
+  h1 {
+    color: $primario;
+    text-align: center;
+    border-bottom: 1px solid $primario;
+  }
+  #panel {
+    margin-top: $margen;
+  }
+  #invitados {
+    padding: $margen 0 $margen 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    li {
+        position: relative;
+        flex: 1 0 100%;
+      display: flex;
+      gap: 1rem;
+      width: fit-content;
+      border-bottom: solid 1px $primario;
+      margin-bottom: $margen-min;
+      align-items: center;
+    }
+  }
+  .invitado{
+    background-color: bisque;
+  }
+  .confirmado{
+    background-color: rgb(203, 255, 245);
+  }
+  #explicalo ul{
+    display: flex;
+    gap : 1rem;
+      li{
+        position: relative;
+        padding: 0px 5px;
+        margin-right: 50px;
+      }
+  }
+  #color-invitado::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    background-color: bisque;
+
+  }
+  #color-confirmado::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -40px;
+    width: 30px;
+    height: 30px;
+    background-color: rgb(203, 255, 245);
+
+  }
+</style>
+<>
+    <script>
+        const copiar = document.querySelectorAll('#copiar');
+        const confirmo = document.querySelectorAll('#confirmo');
+        const limpiar = document.querySelectorAll('#reset');
+
+        let idCopiar = localStorage.getItem('id') ? JSON.parse(localStorage.getItem('id')) : [];
+
+copiar.forEach(boton => {
+
+
+  boton.addEventListener('click', (e: any) => {
+
+      const id = e.target.parentElement.getAttribute('data-id');
+      e.target.parentElement.classList.add('invitado');
+    //   copio al Clipboard con la funcion copiame
+      copiame(e.target.value as HTMLElement);
+
+      modificarLocalStorage(id, true, false, false);
+      
+    })
+})
+
+confirmo.forEach(confirmado => {
+    confirmado.addEventListener('click', (e: any) => {
+        e.target.parentElement.classList.remove('invitado');
+        e.target.parentElement.classList.add('confirmado');
+        // hacer el set en localStorage
+      
+  })
+})
+limpiar.forEach(limpio => {
+    limpio.addEventListener('click', (e: any) => {
+        e.target.parentElement.classList.remove('invitado');
+        e.target.parentElement.classList.remove('confirmado');
+        // hacer el set en localStorage
+      
+  })
+})
+function copiame(copiar) {
+  navigator.clipboard.writeText(copiar);
+  // Alert the copied text, mejor usar modal
+//   alert("Copied the text: " + copiar);
+}
+
+function modificarLocalStorage(id, copiado, confirmado, limpiado) {
+  
+            const invitado = {
+                id: id,
+                copiado: copiado,
+                confirmo: confirmado,
+                limpiado: limpiado
+            }
+      
+        
+    //             console.log(invitadosData[id])
+    invitadosData.push(JSON.stringify(invitado));
+    localStorage.setItem('invitados', JSON.stringify(invitadosData));
+
+
+}
+
+const invitadosData = JSON.parse(localStorage.getItem('invitados'))
+// const invitadosData = localStorage.getItem('invitados')
+console.log( typeof invitadosData, invitadosData)
+
+
+
+</script>
