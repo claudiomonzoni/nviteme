@@ -149,18 +149,34 @@ function modificarLocalStorage(id, copiado, confirmado, limpiado) {
                 limpiado: limpiado
             }
       
-        
-                console.log(invitadosData)
-    invitadosData.push(invitado);
-    localStorage.setItem('invitados', JSON.stringify(invitadosData));
+        let duplicado = invitadosData.find((invitado) => (
+          console.log(invitado)
+        ));
+
+        if (duplicado) {
+        }else{
+          invitadosData.push(invitado);
+          localStorage.setItem('invitados', JSON.stringify(invitadosData));
+  
+
+        }
+          
+                
 
 
 }
 
+const revisar = JSON.parse(localStorage.getItem('invitados'))
+if(revisar === null){
+  var invitadosData = []
 
-let invitadosData = JSON.parse(localStorage.getItem('invitados'))
-// invitadosData = []
-console.log( typeof invitadosData, invitadosData)
+}else{
+   invitadosData = JSON.parse(localStorage.getItem('invitados'))
+
+}
+
+
+
 
 
 
