@@ -14,6 +14,7 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
             <li id="color-invitado">Invitación copiada</li>
             <li id="color-confirmado">Invitado confirmado</li>
         </ul>
+        <p>Área de invitados donde podrás copiar cada invitación para enviar la dirección por redes sociales, mensajes o email, marcarla como confirmada la asistencia o eliminar la confirmación en caso de que el invitado cancele despues de confirmar.</p>
       </div>
       <div id="invitados">
         {
@@ -23,9 +24,9 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
               <p>ID: {id} </p>
               <h3>{invitado.nombre}</h3>
               <p>Pases: {invitado.pases}</p>
-             <button id="copiar" value=`${dir}${id}`>copiar invitación</button>
-             <button id="confirmo">Confirmada asistencia</button>
-             <button id="reset">Reset</button>
+             <button id="copiar" value=`${dir}${id}`> Copiar invitación </button>
+             <button id="confirmo">Invitado confirmado</button>
+             <button id="reset">Limpiar</button>
 
             </li>
           ))
@@ -36,6 +37,9 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
 </Layout>
 <style lang="scss">
   @import "../estilos/_variables.scss";
+  
+  $colorInvitado : #cccccc;
+  $colorConfirmado : #9bffb0;
   h1 {
     color: $primario;
     text-align: center;
@@ -61,10 +65,10 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
     }
   }
   .invitado{
-    background-color: bisque;
+    background-color: $colorInvitado;
   }
   .confirmado{
-    background-color: rgb(203, 255, 245);
+    background-color: $colorConfirmado;
   }
   #explicalo ul{
     display: flex;
@@ -82,7 +86,7 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
     right: -40px;
     width: 30px;
     height: 30px;
-    background-color: bisque;
+    background-color: $colorInvitado
 
   }
   #color-confirmado::before{
@@ -92,7 +96,7 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
     right: -40px;
     width: 30px;
     height: 30px;
-    background-color: rgb(203, 255, 245);
+    background-color: $colorConfirmado
 
   }
 </style>
@@ -196,10 +200,10 @@ if(revisar === null){
 
   invitadosData.forEach((lili, i) => {
     // regresa el id en almacenado en localStorage
-    console.log(lili)
+
     const lista = document.querySelector(`#invitados li[data-id="${lili.id}"]`);
     if (lili) {
-      console.log(lista as HTMLElement)
+
       if (lili.copiado) {
         lista.classList.add('invitado');
       }
