@@ -17,6 +17,7 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
       </div>
       <div id="invitados">
         {
+     
           invitadosData.map((invitado, id) => (
             <li data-id={id}>
               <p>ID: {id} </p>
@@ -100,6 +101,7 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
         const copiar = document.querySelectorAll('#copiar');
         const confirmo = document.querySelectorAll('#confirmo');
         const limpiar = document.querySelectorAll('#reset');
+        const invitadosDOM = document.querySelectorAll('#invitados li');
 
 
 copiar.forEach(boton => {
@@ -157,10 +159,7 @@ function modificarLocalStorage(id, copiado, confirmado, limpiado) {
         ));
 
         
-        
-        
-        
-        
+
         if (!existe) {
           invitadosData.push(invitado);
           localStorage.setItem('invitados', JSON.stringify(invitadosData));
@@ -174,7 +173,16 @@ function modificarLocalStorage(id, copiado, confirmado, limpiado) {
             }
           }
           )
-          
+        }
+        if(existe && limpiado == true){
+          // encontrar posicion de id en el array y borrar
+          invitadosData.forEach((lim, index) => {
+            if (lim.id === id) {
+              const limpiar = invitadosData.splice(index, 1)
+              localStorage.setItem('invitados', JSON.stringify(invitadosData));
+            }
+          }
+          )
         }
 }
 
@@ -184,7 +192,31 @@ if(revisar === null){
 
 }else{
    invitadosData = JSON.parse(localStorage.getItem('invitados'))
+  //  recorro los invitados y les asino sus clases
 
+  invitadosData.forEach((lili, i) => {
+    // regresa el id en almacenado en localStorage
+    console.log(lili)
+    const lista = document.querySelector(`#invitados li[data-id="${lili.id}"]`);
+    if (lili) {
+      console.log(lista as HTMLElement)
+      if (lili.copiado) {
+        lista.classList.add('invitado');
+      }
+      if (lili.confirmo) {
+        lista.classList.add('confirmado');
+      }
+      if (lili.limpiado) {
+        lista.classList.remove('invitado');
+        lista.classList.remove('confirmado');
+      }
+    }
+
+  })
+ 
+
+
+  
 }
 
 

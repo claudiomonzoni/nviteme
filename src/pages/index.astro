@@ -17,6 +17,7 @@ import BloqueVenta from "../components/BloqueVenta.astro";
 
 // datos del json
 const invitados = "Familia Hernández";
+
 const pases = 4;
 // datos del evento
 const novios = "Delia y Oliver ";
@@ -24,7 +25,8 @@ const fecha = "sábado 27 de abril del 2024";
 const fechaContador = "2024-04-27";
 const vestimenta = "formal";
 const whatsapp = 5217551048550;
-const frase_amor = "De vez en cuando, justo en medio de una vida ordinaria, el amor nos regala un cuento de hadas."
+const frase_amor =
+  "De vez en cuando, justo en medio de una vida ordinaria, el amor nos regala un cuento de hadas.";
 // Mapa recepcion y ceremonia
 const horarioRecepcion = "18:30";
 const dirRecepcion =
@@ -37,40 +39,38 @@ const dirCeremonia =
 const latCeremonia = 17.665128;
 const lngCeremonia = -101.597448;
 //itinerario
-const iterario= [
+const iterario = [
   {
     titulo: "Ceremonia Religiosa",
     lugar: "Iglesa de la Santa Cruz, Ixtapa Gro.",
-    hora: "16:30"
+    hora: "16:30",
   },
   {
     titulo: "Recepción",
     lugar: "Salón de eventos Hotel SunScape Ixtapa",
-    hora: "18:30"
+    hora: "18:30",
   },
   {
     titulo: "Mariachi en vivo",
     lugar: "Salón de eventos Hotel SunScape Ixtapa",
-    hora: "20:00"
+    hora: "20:00",
   },
   {
     titulo: "Baile de los novios",
     lugar: "Salón de eventos Hotel SunScape Ixtapa",
-    hora: "22:30"
+    hora: "22:30",
   },
   {
     titulo: "Cena y Brindis",
     lugar: "Salón de eventos Hotel SunScape Ixtapa",
-    hora: "23:00"
+    hora: "23:00",
   },
   {
     titulo: "Cierre del evento",
     lugar: "Salón de eventos Hotel SunScape Ixtapa",
-    hora: "3:00"
-  }
-
-
-]
+    hora: "3:00",
+  },
+];
 // regalos
 const beneficiario = "Delia Ramirez";
 const banco = "Banco Santander";
@@ -83,7 +83,8 @@ const url = "https://nvite.me/boda-delia-y-oliver";
   <Hero nombres={novios} fecha={fecha} client:load />
   <Encabezados icono="/evento-icono.svg" texto="NUESTRA BODA" />
   <ParrafosLibres>
-    Daremos el “sí quiero”, seguiremos este emocionante viaje juntos y nos encantaría que nos acompañes a celebrar la gran fiesta de nuestra boda.
+    Daremos el “sí quiero”, seguiremos este emocionante viaje juntos y nos
+    encantaría que nos acompañes a celebrar la gran fiesta de nuestra boda.
   </ParrafosLibres>
   <section class="grid contenido">
     <div class="conte-cartas">
@@ -103,9 +104,7 @@ const url = "https://nvite.me/boda-delia-y-oliver";
   </section>
 
   <section class="grid contenido">
-    <Frase
-      frase={frase_amor}
-    />
+    <Frase frase={frase_amor} />
   </section>
 
   <Encabezados icono="/lugar-icono.svg" texto="EL LUGAR" />
@@ -135,8 +134,7 @@ const url = "https://nvite.me/boda-delia-y-oliver";
   </section>
 
   <Encabezados icono="/lugar-icono.svg" texto="ITINERARIO" />
-    <Itinerario listado={iterario} />
-
+  <Itinerario listado={iterario} />
 
   <section class="grid contenido">
     <Regalos
