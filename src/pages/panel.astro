@@ -101,10 +101,8 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
         const confirmo = document.querySelectorAll('#confirmo');
         const limpiar = document.querySelectorAll('#reset');
 
-        let idCopiar = localStorage.getItem('id') ? JSON.parse(localStorage.getItem('id')) : [];
 
 copiar.forEach(boton => {
-
 
   boton.addEventListener('click', (e: any) => {
 
@@ -120,17 +118,21 @@ copiar.forEach(boton => {
 
 confirmo.forEach(confirmado => {
     confirmado.addEventListener('click', (e: any) => {
-        e.target.parentElement.classList.remove('invitado');
-        e.target.parentElement.classList.add('confirmado');
-        // hacer el set en localStorage
-      
-  })
-})
-limpiar.forEach(limpio => {
-    limpio.addEventListener('click', (e: any) => {
+       const id = e.target.parentElement.getAttribute('data-id');
+       e.target.parentElement.classList.remove('invitado');
+       e.target.parentElement.classList.add('confirmado');
+       // hacer el set en localStorage
+       modificarLocalStorage(id, true, true, false);
+       
+      })
+    })
+    limpiar.forEach(limpio => {
+      limpio.addEventListener('click', (e: any) => {
+        const id = e.target.parentElement.getAttribute('data-id');
         e.target.parentElement.classList.remove('invitado');
         e.target.parentElement.classList.remove('confirmado');
         // hacer el set en localStorage
+        modificarLocalStorage(id, true, true, true);
       
   })
 })
@@ -149,21 +151,31 @@ function modificarLocalStorage(id, copiado, confirmado, limpiado) {
                 limpiado: limpiado
             }
       
-        let duplicado = invitadosData.find((invitado) => (
-          console.log(invitado)
+            // verifico que no haya sido picado el boton antes y devuelvo el objeto picado
+        const existe = invitadosData.find((inv) => (
+          inv.id === id ? true : false
         ));
 
-        if (duplicado) {
-        }else{
+        
+        
+        
+        
+        
+        if (!existe) {
           invitadosData.push(invitado);
           localStorage.setItem('invitados', JSON.stringify(invitadosData));
-  
-
         }
+        if(existe && confirmado == true){
+          // encontrar posicion de id en el array
+          invitadosData.forEach((inv, index) => {
+            if (inv.id === id) {
+              const confir = invitadosData.splice(index, 1, invitado)
+              localStorage.setItem('invitados', JSON.stringify(invitadosData));
+            }
+          }
+          )
           
-                
-
-
+        }
 }
 
 const revisar = JSON.parse(localStorage.getItem('invitados'))
