@@ -6,27 +6,36 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
 ---
 
 <Layout title="Panel de administración">
+  <div id="barra">
+    <img src="/nvite-logo.svg" alt="Invitaciones digitales" id="logo">
+    <p>Boda de Delia y Oliver</p>
+  </div>
   <div class="grid contenido">
     <section id="panel">
-      <h1>Panel de invitados</h1>
+      <h2>Panel de invitados</h2>
       <div id="explicalo">
+        <p>Copia las invitaciones y marca a los invitados confirmados.</p>
+        <p class="alerta">
+          <b>Importante:</b> La información no estará sicronizada entre distintos dispositivos,<b> te recomendamos usar un solo dispositivo</b>, ya sea tu celular o computadora para llevar el control.
+        </p>
         <ul>
             <li id="color-invitado">Invitación copiada</li>
             <li id="color-confirmado">Invitado confirmado</li>
         </ul>
-        <p>Área de invitados donde podrás copiar cada invitación para enviar la dirección por redes sociales, mensajes o email, marcarla como confirmada la asistencia o eliminar la confirmación en caso de que el invitado cancele despues de confirmar.</p>
       </div>
       <div id="invitados">
         {
      
           invitadosData.map((invitado, id) => (
             <li data-id={id}>
-              <p>ID: {id} </p>
+
               <h3>{invitado.nombre}</h3>
-              <p>Pases: {invitado.pases}</p>
-             <button id="copiar" value=`${dir}${id}`> Copiar invitación </button>
-             <button id="confirmo">Invitado confirmado</button>
+              <p class="info">Id: {id} | Pases: {invitado.pases}</p>
+            <div class="btnes" data-id={id}>
+              <button id="copiar" value=`${dir}${id}`> <img src="copy.png" alt="copiar" /> Copiar invitación </button>
+             <button id="confirmo"> <img src="read.png" alt="confirmo" /> Asistecia confirmada</button>
              <button id="reset">Limpiar</button>
+              </div>
 
             </li>
           ))
@@ -38,9 +47,22 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
 <style lang="scss">
   @import "../estilos/_variables.scss";
   
-  $colorInvitado : #cccccc;
-  $colorConfirmado : #9bffb0;
-  h1 {
+  $colorInvitado : #FCF1E4;
+  $colorConfirmado : #B8F4F4;
+  #barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: $margen-min $margen-cel;
+    border-bottom: 1px solid $primario;
+  }
+  #logo {
+    max-width: 150px;
+    @include cel {
+      max-width: 100px;
+    }
+  }
+  h2 {
     color: $primario;
     text-align: center;
     border-bottom: 1px solid $primario;
@@ -49,7 +71,6 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
     margin-top: $margen;
   }
   #invitados {
-    padding: $margen 0 $margen 0;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -57,11 +78,44 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
         position: relative;
         flex: 1 0 100%;
       display: flex;
+      flex-wrap:wrap;
       gap: 1rem;
       width: fit-content;
       border-bottom: solid 1px $primario;
       margin-bottom: $margen-min;
+      padding: $margen-min;
       align-items: center;
+      justify-content: space-between;
+      h3{
+        
+        font-size: clamp(1.6rem, 2.5vw, 3rem);
+        @include cel {
+          flex: 1 0 100%;
+          border-bottom:1px solid $primario;
+        }
+      }
+      .info{
+        flex: 1;
+        text-align: right;
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        margin-bottom: 0;
+      }
+      button{
+        padding: .4rem .6rem;
+        flex: 1;
+        border: none;
+        margin: .2rem;
+        background-color: $terciario;
+        color: $primario;
+        vertical-align: middle;
+        border-radius: 5px;
+        img{
+          height: 15px;
+          vertical-align: middle;
+        }
+      }
     }
   }
   .invitado{
@@ -70,9 +124,16 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
   .confirmado{
     background-color: $colorConfirmado;
   }
+  #explicalo{
+    padding: $margen-min 0;
+
+  }
   #explicalo ul{
     display: flex;
     gap : 1rem;
+    border: solid 1px $primario;
+    padding: $margen-min ;
+    font-size: .8rem;
       li{
         position: relative;
         padding: 0px 5px;
@@ -82,21 +143,25 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
   #color-invitado::before{
     content: '';
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     right: -40px;
     width: 30px;
     height: 30px;
-    background-color: $colorInvitado
-
+    background-color: $colorInvitado;
+    border-radius: 50%;
+    
   }
   #color-confirmado::before{
     content: '';
     position: absolute;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     right: -40px;
     width: 30px;
     height: 30px;
-    background-color: $colorConfirmado
+    background-color: $colorConfirmado;
+    border-radius: 50%;
 
   }
 </style>
@@ -105,15 +170,14 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
         const copiar = document.querySelectorAll('#copiar');
         const confirmo = document.querySelectorAll('#confirmo');
         const limpiar = document.querySelectorAll('#reset');
-        const invitadosDOM = document.querySelectorAll('#invitados li');
 
 
 copiar.forEach(boton => {
 
   boton.addEventListener('click', (e: any) => {
 
-      const id = e.target.parentElement.getAttribute('data-id');
-      e.target.parentElement.classList.add('invitado');
+      const id = e.target.parentElement.parentElement.getAttribute('data-id');
+      e.target.parentElement.parentElement.classList.add('invitado');
     //   copio al Clipboard con la funcion copiame
       copiame(e.target.value as HTMLElement);
 
@@ -124,9 +188,9 @@ copiar.forEach(boton => {
 
 confirmo.forEach(confirmado => {
     confirmado.addEventListener('click', (e: any) => {
-       const id = e.target.parentElement.getAttribute('data-id');
-       e.target.parentElement.classList.remove('invitado');
-       e.target.parentElement.classList.add('confirmado');
+       const id = e.target.parentElement.parentElement.getAttribute('data-id');
+       e.target.parentElement.parentElement.classList.remove('invitado');
+       e.target.parentElement.parentElement.classList.add('confirmado');
        // hacer el set en localStorage
        modificarLocalStorage(id, true, true, false);
        
@@ -134,9 +198,9 @@ confirmo.forEach(confirmado => {
     })
     limpiar.forEach(limpio => {
       limpio.addEventListener('click', (e: any) => {
-        const id = e.target.parentElement.getAttribute('data-id');
-        e.target.parentElement.classList.remove('invitado');
-        e.target.parentElement.classList.remove('confirmado');
+        const id = e.target.parentElement.parentElement.getAttribute('data-id');
+        e.target.parentElement.parentElement.classList.remove('invitado');
+        e.target.parentElement.parentElement.classList.remove('confirmado');
         // hacer el set en localStorage
         modificarLocalStorage(id, true, true, true);
       
@@ -145,7 +209,7 @@ confirmo.forEach(confirmado => {
 function copiame(copiar) {
   navigator.clipboard.writeText(copiar);
   // Alert the copied text, mejor usar modal
-//   alert("Copied the text: " + copiar);
+  alert("Invitación copiada en la memoria de tu dispositivo, ya la puedes pegar: " + copiar);
 }
 
 function modificarLocalStorage(id, copiado, confirmado, limpiado) {
