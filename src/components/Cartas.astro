@@ -69,6 +69,7 @@ const { icono, titulo } = Astro.props;
           start: "top 70%",
           end: "bottom 60%",
           scrub: true,
+          
         }
     });
       // desktop setup code here...
@@ -88,10 +89,9 @@ const { icono, titulo } = Astro.props;
       const tl = gsap.timeline({
       scrollTrigger: {
           trigger: cart as HTMLElement,
-          start: "top 50%",
+          start: "top 80%",
           end: "bottom 20%",
-          scrub: true,
-     
+          scrub: true
         }
     });
       // mobile setup code here...
