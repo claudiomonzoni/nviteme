@@ -4,6 +4,9 @@ interface Props {
   titulo: string;
 }
 const { icono, titulo } = Astro.props;
+
+const base = import.meta.env.BASE_URL
+const urlPatron = `url("${base}/patron-fondo.png")`
 ---
 
 <div class="carta">
@@ -13,14 +16,14 @@ const { icono, titulo } = Astro.props;
   <slot />
 </div>
 
-<style lang="scss">
+<style lang="scss" define:vars={{urlPatron}}>
   @import "../estilos/_variables.scss";
 
   .carta {
     aspect-ratio: 1/1;
     flex: 1;
     text-align: center;
-    background: url("/patron-fondo.png"), $secundario;
+    background: var(--urlPatron), $secundario;
     background-blend-mode: multiply;
     background-size: 200% 200%;
     background-position: center;

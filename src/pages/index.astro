@@ -15,14 +15,15 @@ import Galeria from "../components/Galeria.astro";
 import Itinerario from "../components/Itinerario.astro";
 import BloqueVenta from "../components/BloqueVenta.astro";
 
+//Bloqueventas.astro
+const costo = 1490;
 // datos del json
 const invitados = "Familia Hernández";
-
 const pases = 4;
 // datos del evento
 const novios = "Delia y Oliver ";
 const fecha = "sábado 27 de abril del 2024";
-const fechaContador = "2024-04-27";
+const fechaContador = "2024-12-27";
 const vestimenta = "formal";
 const whatsapp = 5217551048550;
 const frase_amor =
@@ -30,7 +31,7 @@ const frase_amor =
 // Mapa recepcion y ceremonia
 const horarioRecepcion = "18:30";
 const dirRecepcion =
-  "<b>Hotel SunScape Ixtapa </b>, Blvd. Paseo Ixtapa S/N-A, 40884 Zihuatanejo, Gro.";
+  "<b>Hotel SunScape Ixtapa </b>, Blvd. Paseo Ixtapa S/N-A, 40884 Zihuatanejo, Gro Blvd. Paseo Ixtapa S/N-A, 40884 Zihuatanejo, Gro.";
 const latRecepcion = 17.661152;
 const lngRecepcion = -101.603728;
 const horarioCeremonia = "16:30";
@@ -76,28 +77,29 @@ const beneficiario = "Delia Ramirez";
 const banco = "Banco Santander";
 const cuenta = "123456789";
 // open graph
-const url = "https://nvite.me/boda-delia-y-oliver";
+const base = import.meta.env.BASE_URL
+
 ---
 
-<Layout title=`Invitación de boda de ${novios}` url={url}>
+<Layout title=`Invitación de boda de ${novios}` url={base}>
   <Hero nombres={novios} fecha={fecha} client:load />
-  <Encabezados icono="/evento-icono.svg" texto="NUESTRA BODA" />
+  <Encabezados icono=`${base}/evento-icono.svg` texto="NUESTRA BODA" />
   <ParrafosLibres>
     Daremos el “sí quiero”, seguiremos este emocionante viaje juntos y nos
     encantaría que nos acompañes a celebrar la gran fiesta de nuestra boda.
   </ParrafosLibres>
   <section class="grid contenido">
     <div class="conte-cartas">
-      <Cartas icono="/fecha-icono.svg" titulo="Fecha de nuestra boda">
+      <Cartas icono=`${base}/fecha-icono.svg` titulo="Fecha de nuestra boda">
         <p>{fecha}</p>
       </Cartas>
-      <Cartas icono="/detalles-icono.svg" titulo="Detalles">
+      <Cartas icono=`${base}/detalles-icono.svg` titulo="Detalles">
         <ul>
           <li>Favor de no vestir de blanco</li>
           <li>Favor de asistir sin niños menores de 12 años</li>
         </ul>
       </Cartas>
-      <Cartas icono="/formal-icono.svg" titulo="Código de vestimenta">
+      <Cartas icono=`${base}/formal-icono.svg` titulo="Código de vestimenta">
         <p>{vestimenta}</p>
       </Cartas>
     </div>
@@ -107,7 +109,7 @@ const url = "https://nvite.me/boda-delia-y-oliver";
     <Frase frase={frase_amor} />
   </section>
 
-  <Encabezados icono="/lugar-icono.svg" texto="EL LUGAR" />
+  <Encabezados icono=`${base}/lugar-icono.svg` texto="EL LUGAR" />
   <section class="grid contenido fondo-mitad">
     <ParrafosLibres>
       Te compartimos la ubicación, te esperamos en la ceremonia religiosa y en
@@ -133,7 +135,7 @@ const url = "https://nvite.me/boda-delia-y-oliver";
     </div>
   </section>
 
-  <Encabezados icono="/lugar-icono.svg" texto="ITINERARIO" />
+  <Encabezados icono=`${base}/lugar-icono.svg` texto="ITINERARIO" />
   <Itinerario listado={iterario} />
 
   <section class="grid contenido">
@@ -163,7 +165,7 @@ const url = "https://nvite.me/boda-delia-y-oliver";
   </section>
 
   <!-- Borrar el bloque de ventas -->
-  <BloqueVenta costo={1600} />
+  <BloqueVenta costo={costo} />
 </Layout>
 <script>
   import Lenis from "@studio-freight/lenis";

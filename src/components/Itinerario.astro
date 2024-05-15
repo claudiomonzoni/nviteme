@@ -3,6 +3,8 @@ interface Props {
   listado: Array<any>;
 }
 const { listado } = Astro.props;
+const base = import.meta.env.BASE_URL
+const urlPatron = `url("${base}/patron-fondo.png")`
 ---
 
 <section class="grid pantalla" id="riel">
@@ -20,7 +22,7 @@ const { listado } = Astro.props;
 
 </section>
 
-<style lang="scss">
+<style lang="scss" define:vars={{urlPatron}}>
   @import "../estilos/_variables.scss";
 
   
@@ -85,7 +87,10 @@ const { listado } = Astro.props;
     margin-right: 0.5rem;
     width: fit-content;
     font-size: clamp(1rem, 1.5vw, 2vw);
-    background-color: $primario;
+    background: var(--urlPatron), $primario;
+    background-blend-mode:overlay;
+    background-size: cover;
+    background-position: center;
   }
   h4 {
     font-size: clamp(2.5rem, 3vw, 4vw);

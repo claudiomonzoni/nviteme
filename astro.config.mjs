@@ -3,5 +3,8 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [react()]
+  integrations: [react()],
+  site: 'https://nvite-me.vercel.app/',
+  base: '/bodas/nvite-bodas-1'
+
 });

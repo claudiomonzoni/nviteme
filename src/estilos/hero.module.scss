@@ -15,7 +15,7 @@
       width: 100%;
       height: 100%;
       // background: url(var(--cover));
-      background: url("/cover.webp") no-repeat;
+      background: url("/bodas/nvite-bodas-1//cover.webp") no-repeat;
       background-size: cover;
       background-position: center;
     }
@@ -26,8 +26,8 @@
 
   .bandeja {
     grid-row: 2 / -1;
-    background: url("/patron-fondo.webp"), $primario;
-    background-blend-mode: color-dodge;
+    background: url("/bodas/nvite-bodas-1/patron-fondo.webp"), $primario;
+    background-blend-mode:overlay;
     text-align: center;
     color: white;
     display: flex;
