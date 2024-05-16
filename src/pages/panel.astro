@@ -1,13 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import invitadosData from "../data/invitados.json";
-const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
-
+const base = import.meta.env.BASE_URL
+const url = Astro.url.host
 ---
 
 <Layout title="Panel de administración">
   <div id="barra">
-    <img src="/nvite-logo.svg" alt="Invitaciones digitales" id="logo">
+    <img src=`${base}/nvite-logo.svg` alt="Invitaciones digitales" id="logo">
     <p>Boda de Delia y Oliver</p>
   </div>
   <div class="grid contenido">
@@ -32,8 +32,9 @@ const dir = "https://bodas.nvite.me/bodas/daliayoliver/?id=";
               <h3>{invitado.nombre}</h3>
               <p class="info">Id: {id} | Pases: {invitado.pases}</p>
             <div class="btnes" data-id={id}>
-              <button id="copiar" value=`${dir}${id}`> <img src="/copy.png" alt="copiar" /> Copiar invitación </button>
-             <button id="confirmo"> <img src="/read.png" alt="confirmo" /> Asistecia confirmada</button>
+          
+              <button id="copiar" value=`${url}${base}?id=${id}`> <img src=`${base}/copy.png` alt="copiar" /> Copiar invitación </button>
+             <button id="confirmo"> <img src= `${base}/read.png` alt="confirmo" /> Asistecia confirmada</button>
              <button id="reset">Limpiar</button>
               </div>
 
