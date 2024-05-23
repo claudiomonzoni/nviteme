@@ -5,6 +5,6 @@ import react from "@astrojs/react";
 export default defineConfig({
   integrations: [react()],
   site: 'https://nvite-me.vercel.app/',
-  base: '/bodas/nvite-bodas-1'
+  base: '/bodas/nvite-bodas-2'
 
 });

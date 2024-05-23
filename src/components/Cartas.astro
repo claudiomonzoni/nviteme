@@ -10,14 +10,23 @@ const urlPatron = `url("${base}/patron-fondo.png")`
 ---
 
 <div class="carta">
-  <img src={icono} alt={titulo} />
-  <h3>{titulo}</h3>
 
-  <slot />
+    <img src={icono} alt={titulo} />
+    <h3 class="overlay">{titulo}</h3>
+    <slot />
+
 </div>
 
 <style lang="scss" define:vars={{urlPatron}}>
   @import "../estilos/_variables.scss";
+  .overlay {
+    // filter: ;
+    // color: white;
+    // filter: invert(20%);
+    // mix-blend-mode: screen;
+ 
+  }
+
 
   .carta {
     aspect-ratio: 1/1;

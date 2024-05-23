@@ -1,11 +1,12 @@
 @use "variables" as *;
 @use "componentes" as *;
 
-@import url("https://fonts.googleapis.com/css2?family=Italiana&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
 
 // hacer el scroll suave
 html.lenis, html.lenis body {
   height: auto;
+
 }
 
 .lenis.lenis-smooth {
@@ -80,7 +81,7 @@ h1,
 h2,
 h3, h4 {
   line-height: 1em;
-  font-family: "Italiana", sans-serif;
+  font-family: $encabezados, sans-serif;
   padding-bottom: 0.7rem;
   color: $secundario;
 }
@@ -205,4 +206,8 @@ b {
 }
 .desactivado {
   pointer-events: none;
+}
+.opa{
+  visibility: hidden;
+  border: 10px solid red !important;
 }

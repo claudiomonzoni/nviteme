@@ -17,64 +17,62 @@ import BloqueVenta from "../components/BloqueVenta.astro";
 
 //Bloqueventas.astro
 const costo = 1490;
-// datos del json
-const invitados = "Familia Hernández";
-const pases = 4;
+
 // datos del evento
-const novios = "Delia y Oliver ";
-const fecha = "sábado 27 de abril del 2024";
-const fechaContador = "2024-12-27";
+const novios = "Ana Montaño Hernandez y Pedro Gómez Rulfo ";
+const fecha = "sábado 23 de noviembre del 2024";
+const fechaContador = "2024-11-23";
 const vestimenta = "formal";
-const whatsapp = 5217551048550;
+const whatsapp = 5219552630000;
 const frase_amor =
-  "De vez en cuando, justo en medio de una vida ordinaria, el amor nos regala un cuento de hadas.";
+  "Te encontré sin siquiera buscarte, pero eres la casualidad más bonita que tengo en vida";
 // Mapa recepcion y ceremonia
 const horarioRecepcion = "18:30";
 const dirRecepcion =
-  "<b>Hotel SunScape Ixtapa </b>, Blvd. Paseo Ixtapa S/N-A, 40884 Zihuatanejo, Gro Blvd. Paseo Ixtapa S/N-A, 40884 Zihuatanejo, Gro.";
+  "<b>Centro de convenciones </b>, Blvd. Paseo Ixtapa S/N-A, 40884 Zihuatanejo, Gro Blvd. Paseo Ixtapa S/N-A, 40884 Zihuatanejo, Gro.";
 const latRecepcion = 17.661152;
 const lngRecepcion = -101.603728;
 const horarioCeremonia = "16:30";
 const dirCeremonia =
-  "<b>Iglesia de la Santa Cruz</b>, Calle Paseo de los Pelicanos 40883, Ixtapa Gro. (frente a la Moraleja)";
+  "<b>Templo de la Concepción</b>, Calle Paseo de los Pelicanos 40883, Ixtapa Gro. (frente a la Moraleja)";
 const latCeremonia = 17.665128;
 const lngCeremonia = -101.597448;
 //itinerario
 const iterario = [
   {
     titulo: "Ceremonia Religiosa",
-    lugar: "Iglesa de la Santa Cruz, Ixtapa Gro.",
+    lugar: "Templo de la Concepción, Morelia Mich.",
     hora: "16:30",
   },
   {
     titulo: "Recepción",
-    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    lugar: "Centro de convenciones, Morelia Mich.",
     hora: "18:30",
   },
   {
     titulo: "Mariachi en vivo",
-    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    lugar: "Centro de convenciones, Morelia Mich.",
     hora: "20:00",
   },
   {
     titulo: "Baile de los novios",
-    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    lugar: "Centro de convenciones, Morelia Mich.",
     hora: "22:30",
   },
   {
     titulo: "Cena y Brindis",
-    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    lugar: "Centro de convenciones, Morelia Mich.",
     hora: "23:00",
   },
   {
     titulo: "Cierre del evento",
-    lugar: "Salón de eventos Hotel SunScape Ixtapa",
+    lugar: "Centro de convenciones, Morelia Mich.",
     hora: "3:00",
   },
 ];
 // regalos
-const beneficiario = "Delia Ramirez";
-const banco = "Banco Santander";
+const beneficiario = "Ana Montaño Hernandez";
+const banco = "Banco HSBC";
 const cuenta = "123456789";
 // open graph
 const base = import.meta.env.BASE_URL
@@ -93,7 +91,7 @@ const base = import.meta.env.BASE_URL
       <Cartas icono=`${base}/fecha-icono.svg` titulo="Fecha de nuestra boda">
         <p>{fecha}</p>
       </Cartas>
-      <Cartas icono=`${base}/detalles-icono.svg` titulo="Detalles">
+      <Cartas icono=`${base}/detalles-icono.svg` titulo="Consideraciones">
         <ul>
           <li>Favor de no vestir de blanco</li>
           <li>Favor de asistir sin niños menores de 12 años</li>
