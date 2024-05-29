@@ -8,7 +8,7 @@ export default function Hero({ nombres, fecha }) {
   const [pase, setPase] = useState(0);
   useEffect(() => {
 
-    document.querySelector(".contenido").classList.remove("opacidad");
+    document.querySelector(".contenido").classList.remove("opa");
     // confirmacion de id
     const valores = window.location.search;
     const params = new URLSearchParams(valores);
@@ -38,7 +38,7 @@ export default function Hero({ nombres, fecha }) {
   }, []);
   return (
     <>
-      <section id={Style["hero"]} className="grid contenido opacidad">
+      <section id={Style["hero"]} className="grid contenido opa">
         <div className={Style.bandeja} id="bande">
           <div className={Style.centro} id="centro">
             <span className={Style.familia} id="invitado">

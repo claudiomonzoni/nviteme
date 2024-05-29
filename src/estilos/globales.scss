@@ -206,3 +206,7 @@ b {
 .desactivado {
   pointer-events: none;
 }
+.opa{
+  visibility: hidden;
+  border: 10px solid red !important;
+}
