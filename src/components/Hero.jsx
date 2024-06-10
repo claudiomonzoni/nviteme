@@ -7,7 +7,6 @@ export default function Hero({ nombres, fecha }) {
   const [invitado, setInvitado] = useState("ID inexistente");
   const [pase, setPase] = useState(0);
   useEffect(() => {
-
     document.querySelector(".contenido").classList.remove("opa");
     // confirmacion de id
     const valores = window.location.search;

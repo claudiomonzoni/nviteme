@@ -1,76 +1,77 @@
 
-  @import "../estilos/_variables.scss";
-  #hero {
-    position: relative;
-    grid-template-rows: 1fr 1fr 20%;
+@import "../estilos/_variables.scss";
+
+ 
+#hero {
+  
+  position: relative;
+  grid-template-rows: 1fr 1fr 20%;
+  height: 140dvh;
+  @include cel {
     height: 100dvh;
-    @include cel {
-      height: auto;
-      grid-template-rows: 1fr 1fr 30%;
-    }
-    &::before {
-      content: "";
-      position: absolute;
-      grid-row: 1 / span 2;
-      width: 100%;
-      height: 100%;
-      // background: url(var(--cover));
-      background: url("/bodas/nvite-bodas-1/cover.webp") no-repeat;
-      background-size: cover;
-      background-position: center;
-    }
+    height: auto;
+    grid-template-rows: 1fr 1fr 30%;
   }
-  .opacidad {
-    opacity: 0;
-  }
-
-  .bandeja {
-    grid-row: 2 / -1;
-    background: url("/bodas/nvite-bodas-1/patron-fondo.webp"), $primario;
-    background-blend-mode:overlay;
-    text-align: center;
-    color: white;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: clamp(1.2rem, 1vw, 3vw);
-    position: relative;
-    padding: $margen-top $margen-min;
-    @include cel {
-      padding: $margen-min;
-      max-height: content;
-    }
-  }
-  h1{
-    padding: $margen-min 0 $margen-min 0;
-  }
-  span {
-    padding-bottom: $margen-min;
-    border-bottom: solid 1px white;
-    display: block;
-  }
-  .familia {
-    font-family: "Italiana", sans-serif;
-    font-size: clamp(1.5rem, 3vw, 6vw);
-  }
-  .fecha {
-    color: $acento;
-    font-family: "Italiana", sans-serif;
-    font-size: clamp(2rem, 3vw, 6vw);
-  }
-  #pases {
-    font-family: "Italiana", sans-serif;
-    background: $secundario;
-    padding: 1rem;
+  &::before {
+    content: "";
     position: absolute;
-    bottom: -4rem;
-    @extend .sombra;
-    span {
-      font-size: clamp(2.5rem, 2vw, 5vw);
-    }
-    @include cel {
-      padding: 1rem;
-      font-size: 1rem;
-    }
+    grid-row: 1 / span 2;
+    width: 100%;
+    height: 100%;
+    // background: url(var(--cover));
+    background: $urlCover no-repeat;
+    background-size: cover;
+    background-position: center;
   }
+}
 
+
+.bandeja {
+  grid-row: 2 / -1;
+  background: $urlPatron, $primario;
+  background-blend-mode:multiply;
+  text-align: center;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.2rem, 1vw, 3vw);
+  position: relative;
+  padding: $margen-top $margen-min;
+  @include cel {
+    padding: $margen-min;
+    max-height: content;
+  }
+}
+h1{
+  padding: $margen-min 0 $margen-min 0;
+}
+span {
+  padding-bottom: $margen-min;
+  border-bottom: solid 1px white;
+  display: block;
+}
+.familia {
+  font-family: $encabezados ;
+  font-size: clamp(1.5rem, 3vw, 6vw);
+}
+.fecha {
+  color: $secundario;
+  font-family: $encabezados ;
+  font-size: clamp(2rem, 3vw, 6vw);
+}
+#pases {
+  font-family: $encabezados;
+  background: $secundario;
+  padding: 1rem;
+  position: absolute;
+  bottom: -4rem;
+  @extend .sombra;
+  span {
+    font-size: clamp(2.5rem, 2vw, 5vw);
+  }
+  @include cel {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}

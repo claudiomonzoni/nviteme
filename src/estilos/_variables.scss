@@ -6,11 +6,11 @@
 // $gris: #2b2b2b;
 
 //colores b
-$primario: #223451;
-$secundario: #a26363;
-$terciario: #f0e7d8;
+$primario: #2b225e;
+$secundario: #f5839a;
+$terciario: #fcf7ee;
 $acento: #f1d4da;
-$gris: #322e3f;
+$gris: #8d58c2;
 
 
 //media query
@@ -30,6 +30,12 @@ $radio-cel: 0.5rem;
 $margen-cel: 2rem;
 $margen-min: 1rem;
 $margen-top-cel: 6rem;
+
+// variable de css para rutas 
+$urlPatron: url("/bodas/nvite-bodas-1/patron-fondo.png");
+$urlCover: url("/bodas/nvite-bodas-1/cover.webp");
+$encabezados: "Cormorant Garamon";
+$txt: "Merriweather";
 
 
 @mixin cel {
