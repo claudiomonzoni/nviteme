@@ -73,7 +73,7 @@ const urlPatron = `url("${base}/patron-fondo.png")`
     scroll-snap-type: inline mandatory;
     display: grid;
     grid-auto-flow: column;
-    padding-bottom: $margen-min;
+    padding-bottom: $margen-cel;
 
   }
   li {
@@ -82,19 +82,26 @@ const urlPatron = `url("${base}/patron-fondo.png")`
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: white;
+    color: $gris;
     padding: $margen;
-    margin-right: 0.5rem;
-    width: fit-content;
+    width: 22vw;
     font-size: clamp(1rem, 1.5vw, 2vw);
-    background: var(--urlPatron), $primario;
-    background-blend-mode:overlay;
-    background-size: cover;
-    background-position: center;
+    border-right: 1px solid $gris;
+    border-top: 1px solid transparent;
+    border-bottom: 1px solid transparent;
+    border-left: 1px solid transparent;
+    @include cel {
+      padding: $margen-cel;
+      width: 60vw;
+    }
+    // background: var(--urlPatron), $primario;
+    // background-blend-mode:overlay;
+    // background-size: cover;
+    // background-position: center;
   }
   h4 {
     font-size: clamp(2.5rem, 3vw, 4vw);
-    color: white;
+    color: $primario;
   }
 </style>
 <!-- 

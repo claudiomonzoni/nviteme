@@ -3,7 +3,6 @@
 
  
 #hero {
-  
   position: relative;
   grid-template-rows: 1fr 1fr 20%;
   height: 140dvh;
@@ -29,7 +28,7 @@
 .bandeja {
   grid-row: 2 / -1;
   background: $urlPatron, $primario;
-  background-blend-mode:multiply;
+  background-blend-mode:overlay;
   text-align: center;
   color: white;
   display: flex;
@@ -45,30 +44,29 @@
 }
 h1{
   padding: $margen-min 0 $margen-min 0;
+  color: $secundario;
 }
 span {
   padding-bottom: $margen-min;
-  border-bottom: solid 1px white;
+  border-bottom: solid 1px $gris;
+  margin-bottom: $margen-min;
   display: block;
 }
 .familia {
-  font-family: $encabezados ;
-  font-size: clamp(1.5rem, 3vw, 6vw);
+  font-size: clamp(1.3rem, 2vw, 5vw);
 }
 .fecha {
   color: $secundario;
-  font-family: $encabezados ;
-  font-size: clamp(2rem, 3vw, 6vw);
+  font-size: clamp(1.2rem, 2vw, 5vw);
 }
 #pases {
-  font-family: $encabezados;
   background: $secundario;
   padding: 1rem;
   position: absolute;
-  bottom: -4rem;
+  bottom: -5rem;
   @extend .sombra;
   span {
-    font-size: clamp(2.5rem, 2vw, 5vw);
+    font-size: clamp(1.5rem, 2vw, 5vw);
   }
   @include cel {
     padding: 1rem;

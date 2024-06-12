@@ -83,7 +83,7 @@ const base = import.meta.env.BASE_URL
 
 <Layout title=`Invitación de boda de ${novios}` url={base}>
   <Hero nombres={novios} fecha={fecha} client:load />
-  <Encabezados icono=`${base}/evento-icono.svg` texto="NUESTRA BODA" />
+  <Encabezados icono=`${base}/evento-icono.svg` texto="Nuestra Boda" />
   <ParrafosLibres>
     Daremos el “sí quiero”, seguiremos este emocionante viaje juntos y nos
     encantaría que nos acompañes a celebrar la gran fiesta de nuestra boda.
@@ -109,7 +109,12 @@ const base = import.meta.env.BASE_URL
     <Frase frase={frase_amor} />
   </section>
 
-  <Encabezados icono=`${base}/lugar-icono.svg` texto="EL LUGAR" />
+   <!-- galeria -->
+   <section class="grid pantalla">
+    <Galeria />
+  </section>
+
+  <Encabezados icono=`${base}/lugar-icono.svg` texto="El Lugar" />
   <section class="grid contenido fondo-mitad">
     <ParrafosLibres>
       Te compartimos la ubicación, te esperamos en la ceremonia religiosa y en
@@ -135,7 +140,7 @@ const base = import.meta.env.BASE_URL
     </div>
   </section>
 
-  <Encabezados icono=`${base}/lugar-icono.svg` texto="ITINERARIO" />
+  <Encabezados icono=`${base}/lugar-icono.svg` texto="Itinerario" />
   <Itinerario listado={iterario} />
 
   <section class="grid contenido">
@@ -154,10 +159,7 @@ const base = import.meta.env.BASE_URL
   <section>
     <Confirmacion whatsapp={whatsapp} dias_antes={7} client:only />
   </section>
-  <!-- galeria -->
-  <section class="grid pantalla">
-    <Galeria />
-  </section>
+ 
 
   <!-- footer -->
   <section class="grid contenido">
